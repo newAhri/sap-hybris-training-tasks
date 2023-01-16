@@ -7,12 +7,16 @@ public class MessageValueTranslator extends AbstractValueTranslator {
     @Override
     public Object importValue(String s, Item item) throws JaloInvalidParameterException {
         clearStatus();
-        EcentaNotification ecentaNotification = (EcentaNotification)item;
-        String message = ecentaNotification.getMessage();
-        if (message.length() < 100){
-            return message;
+        EcentaNotification ecentaNotification = (EcentaNotification) item;
+        String title = ecentaNotification.getTitle();
+        if (title.isEmpty()) {
+            String message = ecentaNotification.getMessage();
+            if (message.length() < 100) {
+                return message;
+            }
+            return message.substring(0, 100);
         }
-        return message.substring(0, 100);
+        return title;
     }
 
     @Override
