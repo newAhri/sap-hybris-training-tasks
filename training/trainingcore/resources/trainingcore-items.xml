@@ -25,7 +25,33 @@
             <value code="WHITE"/>
             <value code="YELLOW"/>
         </enumtype>
+
+        <enumtype code="NotificationTypeEnum" autocreate="true" generate="true" dynamic="true">
+            <value code="ORDERMANAGEMENT"/>
+            <value code="NEWS"/>
+            <value code="SERVICETICKETS"/>
+            <value code="WORKFLOW"/>
+        </enumtype>
+
+        <enumtype code="NotificationPriorityEnum" autocreate="true" generate="true" dynamic="true">
+            <value code="LOW"/>
+            <value code="NORMAL"/>
+            <value code="HIGH"/>
+        </enumtype>
     </enumtypes>
+
+    <relations>
+        <relation code="EcentaNotificationToOrder" localized="false">
+            <sourceElement type="EcentaNotification" cardinality="one"
+                           qualifier="notification">
+                <modifiers optional="true" initial="true"/>
+            </sourceElement>
+            <targetElement type="Order" cardinality="many"
+                           qualifier="orders" ordered="false" collectiontype="list">
+                <modifiers optional="true" initial="true" partof="true"/>
+            </targetElement>
+        </relation>
+    </relations>
 
     <itemtypes>
 
@@ -101,6 +127,72 @@
                         <persistence type="property"/>
                     </attribute>
                 </attributes>
+            </itemtype>
+        </typegroup>
+
+        <typegroup name="Notifications">
+            <itemtype code="EcentaNotification"
+                      autocreate="true" generate="true"
+                      jaloclass="org.training.core.jalo.EcentaNotification">
+                <deployment table="notifications" typecode="11000"/>
+
+                <attributes>
+                    <attribute qualifier="id" type="java.lang.String">
+                        <description>An ID used to uniquely identify this entity</description>
+                        <modifiers optional="false" initial="true" unique="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="b2bCustomer" type="B2BCustomer">
+                        <description>ID of B2B customer to whom notification is sent</description>
+                        <modifiers optional="false" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="date" type="java.util.Date">
+                        <description>Editable date of notification</description>
+                        <modifiers optional="false" write="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="type" type="NotificationTypeEnum">
+                        <description>Type of notification</description>
+                        <modifiers optional="false" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="message" type="localized:java.lang.String">
+                        <description>Message of notification</description>
+                        <modifiers optional="false" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="priority" type="NotificationPriorityEnum">
+                        <description>Priority of notification</description>
+                        <modifiers optional="false" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="read" type="java.lang.Boolean">
+                        <modifiers optional="false" write="true"/>
+                        <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="deleted" type="java.lang.Boolean">
+                        <modifiers optional="false" write="true"/>
+                        <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                        <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <description>Title of notification</description>
+                        <modifiers optional="false" initial="true"/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                </attributes>
+
             </itemtype>
         </typegroup>
 
