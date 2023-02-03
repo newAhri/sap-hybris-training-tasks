@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 13 янв. 2023 г., 11:38:23                   ---
+ * --- Generated at 2 февр. 2023 г., 12:15:54                   ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -10,10 +10,7 @@ import de.hybris.platform.b2b.jalo.B2BCustomer;
 import de.hybris.platform.constants.CoreConstants;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item.AttributeMode;
-import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.SessionContext;
-import de.hybris.platform.jalo.c2l.C2LManager;
-import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.enumeration.EnumerationValue;
 import de.hybris.platform.jalo.order.Order;
 import de.hybris.platform.jalo.type.CollectionType;
@@ -21,8 +18,8 @@ import de.hybris.platform.util.OneToManyHandler;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.training.core.constants.TrainingCoreConstants;
 
 /**
@@ -61,7 +58,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	null,
 	false,
 	true,
-	CollectionType.LIST
+	CollectionType.SET
 	);
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
@@ -233,25 +230,44 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute.
 	 * @return the id - An ID used to uniquely identify this entity
 	 */
-	public String getId(final SessionContext ctx)
+	public Integer getId(final SessionContext ctx)
 	{
-		return (String)getProperty( ctx, ID);
+		return (Integer)getProperty( ctx, ID);
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute.
 	 * @return the id - An ID used to uniquely identify this entity
 	 */
-	public String getId()
+	public Integer getId()
 	{
 		return getId( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute. 
+	 * @return the id - An ID used to uniquely identify this entity
+	 */
+	public int getIdAsPrimitive(final SessionContext ctx)
+	{
+		Integer value = getId( ctx );
+		return value != null ? value.intValue() : 0;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute. 
+	 * @return the id - An ID used to uniquely identify this entity
+	 */
+	public int getIdAsPrimitive()
+	{
+		return getIdAsPrimitive( getSession().getSessionContext() );
 	}
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
 	 * @param value the id - An ID used to uniquely identify this entity
 	 */
-	public void setId(final SessionContext ctx, final String value)
+	public void setId(final SessionContext ctx, final Integer value)
 	{
 		setProperty(ctx, ID,value);
 	}
@@ -260,7 +276,25 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
 	 * @param value the id - An ID used to uniquely identify this entity
 	 */
-	public void setId(final String value)
+	public void setId(final Integer value)
+	{
+		setId( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
+	 * @param value the id - An ID used to uniquely identify this entity
+	 */
+	public void setId(final SessionContext ctx, final int value)
+	{
+		setId( ctx,Integer.valueOf( value ) );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
+	 * @param value the id - An ID used to uniquely identify this entity
+	 */
+	public void setId(final int value)
 	{
 		setId( getSession().getSessionContext(), value );
 	}
@@ -271,11 +305,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 */
 	public String getMessage(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedEcentaNotification.getMessage requires a session language", 0 );
-		}
-		return (String)getLocalizedProperty( ctx, MESSAGE);
+		return (String)getProperty( ctx, MESSAGE);
 	}
 	
 	/**
@@ -288,38 +318,12 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.message</code> attribute. 
-	 * @return the localized message - Message of notification
-	 */
-	public Map<Language,String> getAllMessage(final SessionContext ctx)
-	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,MESSAGE,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.message</code> attribute. 
-	 * @return the localized message - Message of notification
-	 */
-	public Map<Language,String> getAllMessage()
-	{
-		return getAllMessage( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.message</code> attribute. 
 	 * @param value the message - Message of notification
 	 */
 	public void setMessage(final SessionContext ctx, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedEcentaNotification.setMessage requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, MESSAGE,value);
+		setProperty(ctx, MESSAGE,value);
 	}
 	
 	/**
@@ -332,37 +336,19 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.message</code> attribute. 
-	 * @param value the message - Message of notification
+	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.orders</code> attribute.
+	 * @return the orders
 	 */
-	public void setAllMessage(final SessionContext ctx, final Map<Language,String> value)
+	public Set<Order> getOrders(final SessionContext ctx)
 	{
-		setAllLocalizedProperties(ctx,MESSAGE,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.message</code> attribute. 
-	 * @param value the message - Message of notification
-	 */
-	public void setAllMessage(final Map<Language,String> value)
-	{
-		setAllMessage( getSession().getSessionContext(), value );
+		return (Set<Order>)ORDERSHANDLER.getValues( ctx, this );
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.orders</code> attribute.
 	 * @return the orders
 	 */
-	public List<Order> getOrders(final SessionContext ctx)
-	{
-		return (List<Order>)ORDERSHANDLER.getValues( ctx, this );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.orders</code> attribute.
-	 * @return the orders
-	 */
-	public List<Order> getOrders()
+	public Set<Order> getOrders()
 	{
 		return getOrders( getSession().getSessionContext() );
 	}
@@ -371,7 +357,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.orders</code> attribute. 
 	 * @param value the orders
 	 */
-	public void setOrders(final SessionContext ctx, final List<Order> value)
+	public void setOrders(final SessionContext ctx, final Set<Order> value)
 	{
 		ORDERSHANDLER.setValues( ctx, this, value );
 	}
@@ -380,7 +366,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.orders</code> attribute. 
 	 * @param value the orders
 	 */
-	public void setOrders(final List<Order> value)
+	public void setOrders(final Set<Order> value)
 	{
 		setOrders( getSession().getSessionContext(), value );
 	}
@@ -536,11 +522,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 */
 	public String getTitle(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedEcentaNotification.getTitle requires a session language", 0 );
-		}
-		return (String)getLocalizedProperty( ctx, TITLE);
+		return (String)getProperty( ctx, TITLE);
 	}
 	
 	/**
@@ -553,38 +535,12 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.title</code> attribute. 
-	 * @return the localized title - Title of notification
-	 */
-	public Map<Language,String> getAllTitle(final SessionContext ctx)
-	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,TITLE,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.title</code> attribute. 
-	 * @return the localized title - Title of notification
-	 */
-	public Map<Language,String> getAllTitle()
-	{
-		return getAllTitle( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.title</code> attribute. 
 	 * @param value the title - Title of notification
 	 */
 	public void setTitle(final SessionContext ctx, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedEcentaNotification.setTitle requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, TITLE,value);
+		setProperty(ctx, TITLE,value);
 	}
 	
 	/**
@@ -594,24 +550,6 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	public void setTitle(final String value)
 	{
 		setTitle( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.title</code> attribute. 
-	 * @param value the title - Title of notification
-	 */
-	public void setAllTitle(final SessionContext ctx, final Map<Language,String> value)
-	{
-		setAllLocalizedProperties(ctx,TITLE,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.title</code> attribute. 
-	 * @param value the title - Title of notification
-	 */
-	public void setAllTitle(final Map<Language,String> value)
-	{
-		setAllTitle( getSession().getSessionContext(), value );
 	}
 	
 	/**

@@ -44,11 +44,13 @@
         <relation code="EcentaNotificationToOrder" localized="false">
             <sourceElement type="EcentaNotification" cardinality="one"
                            qualifier="notification">
-                <modifiers optional="true" initial="true"/>
+                <modifiers read="true" write="false" search="true"
+                           removable="false" initial="true"/>
             </sourceElement>
             <targetElement type="Order" cardinality="many"
-                           qualifier="orders" ordered="false" collectiontype="list">
-                <modifiers optional="true" initial="true" partof="true"/>
+                           qualifier="orders" collectiontype="set">
+                <modifiers read="true" write="true"
+                           optional="true" partof="true" search="true" />
             </targetElement>
         </relation>
     </relations>
@@ -134,10 +136,10 @@
             <itemtype code="EcentaNotification"
                       autocreate="true" generate="true"
                       jaloclass="org.training.core.jalo.EcentaNotification">
-                <deployment table="notifications" typecode="11000"/>
+                <deployment table="notifications2" typecode="11001"/>
 
                 <attributes>
-                    <attribute qualifier="id" type="java.lang.String">
+                    <attribute qualifier="id" type="java.lang.Integer">
                         <description>An ID used to uniquely identify this entity</description>
                         <modifiers optional="false" initial="true" unique="true"/>
                         <persistence type="property"/>
@@ -151,7 +153,7 @@
 
                     <attribute qualifier="date" type="java.util.Date">
                         <description>Editable date of notification</description>
-                        <modifiers optional="false" write="true"/>
+                        <modifiers optional="true" write="true"/>
                         <persistence type="property"/>
                     </attribute>
 
@@ -161,7 +163,7 @@
                         <persistence type="property"/>
                     </attribute>
 
-                    <attribute qualifier="message" type="localized:java.lang.String">
+                    <attribute qualifier="message" type="java.lang.String">
                         <description>Message of notification</description>
                         <modifiers optional="false" initial="true"/>
                         <persistence type="property"/>
@@ -174,27 +176,25 @@
                     </attribute>
 
                     <attribute qualifier="read" type="java.lang.Boolean">
-                        <modifiers optional="false" write="true"/>
-                        <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                        <modifiers optional="true" write="true"/>
+                        <defaultvalue>Boolean.FALSE</defaultvalue>
                         <persistence type="property"/>
                     </attribute>
 
                     <attribute qualifier="deleted" type="java.lang.Boolean">
-                        <modifiers optional="false" write="true"/>
-                        <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                        <modifiers optional="true" write="true"/>
+                        <defaultvalue>Boolean.FALSE</defaultvalue>
                         <persistence type="property"/>
                     </attribute>
 
-                    <attribute qualifier="title" type="localized:java.lang.String">
+                    <attribute qualifier="title" type="java.lang.String">
                         <description>Title of notification</description>
-                        <modifiers optional="false" initial="true"/>
+                        <modifiers optional="true" initial="false" write="true"/>
                         <persistence type="property"/>
                     </attribute>
 
                 </attributes>
-
             </itemtype>
         </typegroup>
-
     </itemtypes>
 </items>

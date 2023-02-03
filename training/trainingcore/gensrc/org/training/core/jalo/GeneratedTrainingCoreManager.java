@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 13 янв. 2023 г., 11:38:23                   ---
+ * --- Generated at 2 февр. 2023 г., 12:15:54                   ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -9,6 +9,7 @@ package org.training.core.jalo;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.JaloBusinessException;
+import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.extension.Extension;
@@ -211,8 +212,17 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	 * <i>Generated method</i> - Setter of the <code>Order.notification</code> attribute. 
 	 * @param value the notification
 	 */
-	public void setNotification(final SessionContext ctx, final Order item, final EcentaNotification value)
+	protected void setNotification(final SessionContext ctx, final Order item, final EcentaNotification value)
 	{
+		if ( ctx == null) 
+		{
+			throw new JaloInvalidParameterException( "ctx is null", 0 );
+		}
+		// initial-only attribute: make sure this attribute can be set during item creation only
+		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
+		{
+			throw new JaloInvalidParameterException( "attribute '"+TrainingCoreConstants.Attributes.Order.NOTIFICATION+"' is not changeable", 0 );
+		}
 		item.setProperty(ctx, TrainingCoreConstants.Attributes.Order.NOTIFICATION,value);
 	}
 	
@@ -220,7 +230,7 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	 * <i>Generated method</i> - Setter of the <code>Order.notification</code> attribute. 
 	 * @param value the notification
 	 */
-	public void setNotification(final Order item, final EcentaNotification value)
+	protected void setNotification(final Order item, final EcentaNotification value)
 	{
 		setNotification( getSession().getSessionContext(), item, value );
 	}
