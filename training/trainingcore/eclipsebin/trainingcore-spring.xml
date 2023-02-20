@@ -538,4 +538,20 @@
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>
+
+	<alias name="customEcentaNotificationsDAOImpl" alias="customEcentaNotificationsDAO"/>
+	<bean id="customEcentaNotificationsDAOImpl" class="org.training.core.dao.impl.CustomEcentaNotificationsDAOImpl"
+		  parent="abstractItemDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+
+	<alias name="defaultEcentaNotificationsService" alias="ecentaNotificationsService"/>
+	<bean id="defaultEcentaNotificationsService" class="org.training.core.service.impl.DefaultEcentaNotificationsService">
+		<property name="customEcentaNotificationsDAO" ref="customEcentaNotificationsDAO"/>
+	</bean>
+
+	<bean id="ecentaNotificationsMarkingJobPerfomable"
+		  class="org.training.core.job.EcentaNotificationsMarkingJobPerfomable" parent="abstractJobPerformable">
+		<property name="defaultEcentaNotificationsService" ref="defaultEcentaNotificationsService"/>
+	</bean>
 </beans>

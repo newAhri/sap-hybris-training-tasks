@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 2 февр. 2023 г., 12:15:54                   ---
+ * --- Generated at 17 февр. 2023 г., 21:03:50                  ---
  * ----------------------------------------------------------------
  */
 package org.training.core.constants;
@@ -20,6 +20,7 @@ public class GeneratedTrainingCoreConstants
 		public static final String APPARELSIZEVARIANTPRODUCT = "ApparelSizeVariantProduct".intern();
 		public static final String APPARELSTYLEVARIANTPRODUCT = "ApparelStyleVariantProduct".intern();
 		public static final String ECENTANOTIFICATION = "EcentaNotification".intern();
+		public static final String ECENTANOTIFICATIONREMOVALCRONJOB = "EcentaNotificationRemovalCronJob".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
 		public static final String NOTIFICATIONPRIORITYENUM = "NotificationPriorityEnum".intern();
 		public static final String NOTIFICATIONTYPEENUM = "NotificationTypeEnum".intern();

@@ -196,5 +196,20 @@
                 </attributes>
             </itemtype>
         </typegroup>
+        <typegroup name="CronJobs">
+            <itemtype code="EcentaNotificationRemovalCronJob" extends="CronJob"
+                      jaloclass="org.training.core.jalo.EcentaNotificationRemovalCronJob"
+                      autocreate="true" generate="true">
+                <attributes>
+                    <attribute qualifier="xDaysOld" type="int">
+                        <modifiers read="true" write="true" optional="false"/>
+                        <defaultvalue>Integer.valueOf(365)</defaultvalue>
+                        <description>If a notification is older than a year and unread mark them as read and deleted</description>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            
+        </typegroup>
     </itemtypes>
 </items>

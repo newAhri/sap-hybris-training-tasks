@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 2 февр. 2023 г., 12:15:54                   ---
+ * --- Generated at 17 февр. 2023 г., 21:03:50                  ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -25,6 +25,7 @@ import org.training.core.jalo.ApparelProduct;
 import org.training.core.jalo.ApparelSizeVariantProduct;
 import org.training.core.jalo.ApparelStyleVariantProduct;
 import org.training.core.jalo.EcentaNotification;
+import org.training.core.jalo.EcentaNotificationRemovalCronJob;
 import org.training.core.jalo.ElectronicsColorVariantProduct;
 
 /**
@@ -156,6 +157,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public EcentaNotification createEcentaNotification(final Map attributeValues)
 	{
 		return createEcentaNotification( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public EcentaNotificationRemovalCronJob createEcentaNotificationRemovalCronJob(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.ECENTANOTIFICATIONREMOVALCRONJOB );
+			return (EcentaNotificationRemovalCronJob)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating EcentaNotificationRemovalCronJob : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public EcentaNotificationRemovalCronJob createEcentaNotificationRemovalCronJob(final Map attributeValues)
+	{
+		return createEcentaNotificationRemovalCronJob( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ElectronicsColorVariantProduct createElectronicsColorVariantProduct(final SessionContext ctx, final Map attributeValues)

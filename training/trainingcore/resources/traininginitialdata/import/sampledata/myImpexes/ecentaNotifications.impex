@@ -1,0 +1,6 @@
+INSERT_UPDATE EcentaNotification;id[unique=true];b2bCustomer(email);date[dateFormat=('dd.MM.yyyy')];type(code);message[cellDecorator=MessageCellDecorator];priority(code);read;deleted;title[translator=org.training.core.translator.MessageValueTranslator]
+;1;william.hunter@pronto-hw.com;20.01.2020;ORDERMANAGEMENT;Your order has been managed!;LOW;false;false;Order management
+;2;screwdriverslover@pronto-hw.com;21.01.2020;NEWS;Technical maintanance is planned on 25th of January!;NORMAL;false;false;News
+;3;salome.levi@rustic-hw.com;21.01.2023;WORKFLOW;Please change your password!;HIGH;false;false;Workflow
+;4;william.hunter@pronto-hw.com;24.01.2020;NEWS;Discount week is coming! Don't miss!;NORMAL;false;false;News
+;5;screwdriverslover@pronto-hw.com;24.01.2023;ORDERMANAGEMENT;Please confirm your pending order!;HIGH;false;false;Order management
