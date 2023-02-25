@@ -176,12 +176,14 @@
                     </attribute>
 
                     <attribute qualifier="read" type="java.lang.Boolean">
+                        <description>Is notification read</description>
                         <modifiers optional="true" write="true"/>
                         <defaultvalue>Boolean.FALSE</defaultvalue>
                         <persistence type="property"/>
                     </attribute>
 
                     <attribute qualifier="deleted" type="java.lang.Boolean">
+                        <description>Old notification deletion mark</description>
                         <modifiers optional="true" write="true"/>
                         <defaultvalue>Boolean.FALSE</defaultvalue>
                         <persistence type="property"/>
@@ -191,6 +193,12 @@
                         <description>Title of notification</description>
                         <modifiers optional="true" initial="false" write="true"/>
                         <persistence type="property"/>
+                    </attribute>
+
+                    <attribute qualifier="b2bUnit" type="B2BUnit">
+                        <description>Company to which notification should be sent</description>
+                        <modifiers optional="true" write="false" read="true" unique="false"/>
+                        <persistence type="dynamic" attributeHandler="ecentaNotificationB2BUnitHandler"/>
                     </attribute>
 
                 </attributes>

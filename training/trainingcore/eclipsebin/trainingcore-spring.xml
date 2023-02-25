@@ -554,4 +554,8 @@
 		  class="org.training.core.job.EcentaNotificationsMarkingJobPerfomable" parent="abstractJobPerformable">
 		<property name="defaultEcentaNotificationsService" ref="defaultEcentaNotificationsService"/>
 	</bean>
+	<bean id="ecentaNotificationB2BUnitHandler"
+		class="org.training.core.handlers.EcentaNotificationB2BUnitHandler">
+		<property name="modelService" ref="modelService"/>
+	</bean>
 </beans>

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 17 февр. 2023 г., 21:03:50                  ---
+ * --- Generated at 24 февр. 2023 г., 12:48:19                  ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -155,7 +155,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.deleted</code> attribute.
-	 * @return the deleted
+	 * @return the deleted - Old notification deletion mark
 	 */
 	public Boolean isDeleted(final SessionContext ctx)
 	{
@@ -164,7 +164,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.deleted</code> attribute.
-	 * @return the deleted
+	 * @return the deleted - Old notification deletion mark
 	 */
 	public Boolean isDeleted()
 	{
@@ -173,7 +173,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.deleted</code> attribute. 
-	 * @return the deleted
+	 * @return the deleted - Old notification deletion mark
 	 */
 	public boolean isDeletedAsPrimitive(final SessionContext ctx)
 	{
@@ -183,7 +183,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.deleted</code> attribute. 
-	 * @return the deleted
+	 * @return the deleted - Old notification deletion mark
 	 */
 	public boolean isDeletedAsPrimitive()
 	{
@@ -192,7 +192,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.deleted</code> attribute. 
-	 * @param value the deleted
+	 * @param value the deleted - Old notification deletion mark
 	 */
 	public void setDeleted(final SessionContext ctx, final Boolean value)
 	{
@@ -201,7 +201,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.deleted</code> attribute. 
-	 * @param value the deleted
+	 * @param value the deleted - Old notification deletion mark
 	 */
 	public void setDeleted(final Boolean value)
 	{
@@ -210,7 +210,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.deleted</code> attribute. 
-	 * @param value the deleted
+	 * @param value the deleted - Old notification deletion mark
 	 */
 	public void setDeleted(final SessionContext ctx, final boolean value)
 	{
@@ -219,7 +219,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.deleted</code> attribute. 
-	 * @param value the deleted
+	 * @param value the deleted - Old notification deletion mark
 	 */
 	public void setDeleted(final boolean value)
 	{
@@ -445,7 +445,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.read</code> attribute.
-	 * @return the read
+	 * @return the read - Is notification read
 	 */
 	public Boolean isRead(final SessionContext ctx)
 	{
@@ -454,7 +454,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.read</code> attribute.
-	 * @return the read
+	 * @return the read - Is notification read
 	 */
 	public Boolean isRead()
 	{
@@ -463,7 +463,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.read</code> attribute. 
-	 * @return the read
+	 * @return the read - Is notification read
 	 */
 	public boolean isReadAsPrimitive(final SessionContext ctx)
 	{
@@ -473,7 +473,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.read</code> attribute. 
-	 * @return the read
+	 * @return the read - Is notification read
 	 */
 	public boolean isReadAsPrimitive()
 	{
@@ -482,7 +482,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.read</code> attribute. 
-	 * @param value the read
+	 * @param value the read - Is notification read
 	 */
 	public void setRead(final SessionContext ctx, final Boolean value)
 	{
@@ -491,7 +491,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.read</code> attribute. 
-	 * @param value the read
+	 * @param value the read - Is notification read
 	 */
 	public void setRead(final Boolean value)
 	{
@@ -500,7 +500,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.read</code> attribute. 
-	 * @param value the read
+	 * @param value the read - Is notification read
 	 */
 	public void setRead(final SessionContext ctx, final boolean value)
 	{
@@ -509,7 +509,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.read</code> attribute. 
-	 * @param value the read
+	 * @param value the read - Is notification read
 	 */
 	public void setRead(final boolean value)
 	{

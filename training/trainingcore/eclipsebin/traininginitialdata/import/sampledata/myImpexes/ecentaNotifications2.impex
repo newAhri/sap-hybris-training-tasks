@@ -1,0 +1,4 @@
+INSERT_UPDATE EcentaNotification;id[unique=true];b2bCustomer(email);date[dateFormat=('dd.MM.yyyy')];type(code);message[cellDecorator=MessageCellDecorator];priority(code);read;deleted;title[translator=org.training.core.translator.MessageValueTranslator]
+                                ;6;william.hunter@pronto-hw.com;20.01.2021;SERVICETICKETS;Your request is being processed!;NORMAL;false;false;Service tickets
+                                ;7;screwdriverslover@pronto-hw.com;18.02.2020;WORKFLOW;Technical maintanance is planned on 25th of March!;NORMAL;false;false;Workflow
+                                ;8;salome.levi@rustic-hw.com;21.01.2023;SERVICETICKETS;New message from tech-support!;LOW;false;false;Service tickets
