@@ -17,11 +17,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class EcentaNotificationsMarkingJobPerfomable extends AbstractJobPerformable<EcentaNotificationRemovalCronJobModel> {
+public class EcentaNotificationsMarkingJobPerformable extends AbstractJobPerformable<EcentaNotificationRemovalCronJobModel> {
 
 
     protected DefaultEcentaNotificationsService defaultEcentaNotificationsService;
-    private final static Logger LOG = Logger.getLogger(EcentaNotificationsMarkingJobPerfomable.class.getName());
+    private final static Logger LOG = Logger.getLogger(EcentaNotificationsMarkingJobPerformable.class.getName());
 
 
     @Override

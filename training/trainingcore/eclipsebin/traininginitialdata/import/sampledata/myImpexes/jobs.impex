@@ -1,7 +1,0 @@
-INSERT EcentaNotificationRemovalCronJob;code[unique=true];job(code);xDaysOld;sessionLanguage(isocode);sessionCurrency(isocode)
-
-;ecentaNotificationRemovalCronJob;ecentaNotificationsMarkingJobPerfomable;365;en;USD
-
-
-
-
