@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 24 февр. 2023 г., 12:48:19                  ---
+ * --- Generated at 28 февр. 2023 г., 13:09:42                  ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -25,6 +25,7 @@ import org.training.core.jalo.ApparelProduct;
 import org.training.core.jalo.ApparelSizeVariantProduct;
 import org.training.core.jalo.ApparelStyleVariantProduct;
 import org.training.core.jalo.EcentaNotification;
+import org.training.core.jalo.EcentaNotificationFindByCronJob;
 import org.training.core.jalo.EcentaNotificationRemovalCronJob;
 import org.training.core.jalo.ElectronicsColorVariantProduct;
 
@@ -157,6 +158,32 @@ public abstract class GeneratedTrainingCoreManager extends Extension
 	public EcentaNotification createEcentaNotification(final Map attributeValues)
 	{
 		return createEcentaNotification( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public EcentaNotificationFindByCronJob createEcentaNotificationFindByCronJob(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( TrainingCoreConstants.TC.ECENTANOTIFICATIONFINDBYCRONJOB );
+			return (EcentaNotificationFindByCronJob)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating EcentaNotificationFindByCronJob : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public EcentaNotificationFindByCronJob createEcentaNotificationFindByCronJob(final Map attributeValues)
+	{
+		return createEcentaNotificationFindByCronJob( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public EcentaNotificationRemovalCronJob createEcentaNotificationRemovalCronJob(final SessionContext ctx, final Map attributeValues)

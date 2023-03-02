@@ -1,0 +1,2 @@
+INSERT_UPDATE EcentaNotificationFindByCronJob; code[unique = true]             ; job(code)                               ; sessionLanguage(isocode); sessionCurrency(isocode)
+                                             ; ecentaNotificationFindByCronJob ; ecentaNotificationsFindByJobPerformable ; en                      ; USD

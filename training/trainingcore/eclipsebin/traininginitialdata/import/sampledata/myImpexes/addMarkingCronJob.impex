@@ -1,4 +1,5 @@
 INSERT_UPDATE ServicelayerJob;code[unique=true];springId
 ;ecentaNotificationsMarkingJobPerfomable;ecentaNotificationsMarkingJobPerfomable
+;ecentaNotificationsFindByJobPerformable;ecentaNotificationsFindByJobPerformable
 
 
