@@ -7,7 +7,7 @@ import org.training.core.model.EcentaNotificationModel;
 
 import java.util.List;
 
-public interface EcentaNotificationsFindByService {
+public interface EcentaNotificationFindByService {
     List<EcentaNotificationModel> getAllEcentaNotificatonsByB2BCustomer(B2BCustomerModel b2BCustomerModel);
 
     List<EcentaNotificationModel> getAllEcentaNotificatonsByB2BCustomerAndPriority(B2BCustomerModel b2BCustomerModel
