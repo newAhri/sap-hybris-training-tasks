@@ -14,21 +14,19 @@ import org.training.core.enums.NotificationTypeEnum;
 import org.training.core.model.EcentaNotificationFindByCronJobModel;
 import org.training.core.model.EcentaNotificationModel;
 import org.training.core.service.impl.DefaultEcentaNotificationsFindByService;
+import org.training.core.dao.queries.EcentaNotificationQueriesConstants;
 
+import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
 
 public class EcentaNotificationsFindByJobPerformable extends AbstractJobPerformable<EcentaNotificationFindByCronJobModel> {
+
+    @Resource
     private DefaultEcentaNotificationsFindByService defaultEcentaNotificationsFindByService;
+    @Resource
     private FlexibleSearchService flexibleSearchService;
     private B2BCustomerModel b2BCustomerModel;
-    protected final static String SELECT_ONE_ECENTA_NOTIF = "SELECT {"
-            + EcentaNotificationModel.PK
-            + "} FROM {"
-            + EcentaNotificationModel._TYPECODE
-            + "} WHERE {"
-            + EcentaNotificationModel.ID
-            + "} = 1 ";
 
     @Override
     public PerformResult perform(EcentaNotificationFindByCronJobModel ecentaNotificationFindByCronJobModel) {
@@ -81,15 +79,15 @@ public class EcentaNotificationsFindByJobPerformable extends AbstractJobPerforma
         }
     }
 
-
     private void getB2BCustomer() {
-        final FlexibleSearchQuery searchQuery = new FlexibleSearchQuery(SELECT_ONE_ECENTA_NOTIF);
+        final FlexibleSearchQuery searchQuery = new FlexibleSearchQuery(EcentaNotificationQueriesConstants.SELECT_ONE_ECENTA_NOTIF);
         searchQuery.setResultClassList(Collections.singletonList(EcentaNotificationModel.class));
         final SearchResult<EcentaNotificationModel> searchResult = flexibleSearchService.search(searchQuery);
         List<EcentaNotificationModel> result = searchResult.getResult();
         EcentaNotificationModel enm = result.get(0);
         b2BCustomerModel = enm.getB2bCustomer();
     }
+
 
 
     public DefaultEcentaNotificationsFindByService getDefaultEcentaNotificationsFindByService() {
@@ -100,11 +98,11 @@ public class EcentaNotificationsFindByJobPerformable extends AbstractJobPerforma
         this.defaultEcentaNotificationsFindByService = defaultEcentaNotificationsFindByService;
     }
 
-    public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService) {
-        this.flexibleSearchService = flexibleSearchService;
-    }
-
     public FlexibleSearchService getFlexibleSearchService() {
         return flexibleSearchService;
+    }
+
+    public void setFlexibleSearchService(FlexibleSearchService flexibleSearchService) {
+        this.flexibleSearchService = flexibleSearchService;
     }
 }
