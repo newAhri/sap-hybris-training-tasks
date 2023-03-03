@@ -586,6 +586,7 @@
     <bean id="ecentaNotificationsMarkingJobPerformable"
           class="org.training.core.job.EcentaNotificationsMarkingJobPerformable" parent="abstractJobPerformable">
         <property name="defaultEcentaNotificationsService" ref="defaultEcentaNotificationsService"/>
+        <property name="repository" ref="defaultEcentaNotificationRepositoryImpl"/>
     </bean>
 
     <bean name="ecentaNotificationsFindByJobPerformable"
@@ -596,6 +597,12 @@
 
     <bean id="ecentaNotificationB2BUnitHandler"
           class="org.training.core.handlers.EcentaNotificationB2BUnitHandler">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <alias name="defaultEcentaNotificationRepositoryImpl" alias="repository"/>
+    <bean id="defaultEcentaNotificationRepositoryImpl"
+          class="org.training.core.crud.impl.DefaultEcentaNotificationRepositoryImpl">
         <property name="modelService" ref="modelService"/>
     </bean>
 

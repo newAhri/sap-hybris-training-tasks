@@ -4,14 +4,14 @@ import de.hybris.platform.cronjob.enums.CronJobResult;
 import de.hybris.platform.cronjob.enums.CronJobStatus;
 import de.hybris.platform.servicelayer.cronjob.AbstractJobPerformable;
 import de.hybris.platform.servicelayer.cronjob.PerformResult;
-import de.hybris.platform.servicelayer.exceptions.ModelRemovalException;
 import de.hybris.platform.servicelayer.model.ModelService;
-import de.hybris.platform.tx.Transaction;
 import org.springframework.util.CollectionUtils;
+import org.training.core.crud.impl.DefaultEcentaNotificationRepositoryImpl;
 import org.training.core.model.EcentaNotificationModel;
 import org.training.core.model.EcentaNotificationRemovalCronJobModel;
 import org.training.core.service.impl.DefaultEcentaNotificationsService;
 
+import javax.annotation.Resource;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -19,8 +19,11 @@ import java.util.logging.Logger;
 
 public class EcentaNotificationsMarkingJobPerformable extends AbstractJobPerformable<EcentaNotificationRemovalCronJobModel> {
 
-
+    @Resource
     protected DefaultEcentaNotificationsService defaultEcentaNotificationsService;
+    @Resource
+    private DefaultEcentaNotificationRepositoryImpl repository;
+
     private final static Logger LOG = Logger.getLogger(EcentaNotificationsMarkingJobPerformable.class.getName());
 
 
@@ -33,29 +36,20 @@ public class EcentaNotificationsMarkingJobPerformable extends AbstractJobPerform
             final Date oldDate = cal.getTime();
             final List<EcentaNotificationModel> ecentaNotificationModelListToBeMarked = getDefaultEcentaNotificationsService().getOldEcentaNotifications(oldDate);
 
+            int count = 0;
             if (!CollectionUtils.isEmpty(ecentaNotificationModelListToBeMarked)) {
-                int count = 0;
                 for (EcentaNotificationModel ecentaNotificationModel : ecentaNotificationModelListToBeMarked) {
                     ecentaNotificationModel.setDeleted(true);
                     ecentaNotificationModel.setRead(true);
                     count++;
                 }
-                Transaction tx = null;
-                try {
-                    tx = Transaction.current();
-                    tx.begin();
-                    getModelService().saveAll(ecentaNotificationModelListToBeMarked);
-                    tx.commit();
-                    LOG.fine("Number of marked EcentaNotifications: " + count);
-                } catch (final ModelRemovalException ex) {
-                    if (null != tx) {
-                        tx.rollback();
-                    }
-                }
+                repository.saveNewOrUpdateEcentaNotificationList(ecentaNotificationModelListToBeMarked);
+                LOG.info("Marked Ecenta Notifications: " + count);
             } else {
-                LOG.fine("No EcentaNotification to be marked");
+                LOG.info("No EcentaNotification to be marked");
             }
             return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
+
         } catch (final Exception ex) {
             LOG.warning("Exception");
             return new PerformResult(CronJobResult.FAILURE, CronJobStatus.ABORTED);
@@ -73,4 +67,13 @@ public class EcentaNotificationsMarkingJobPerformable extends AbstractJobPerform
     public void setDefaultEcentaNotificationsService(DefaultEcentaNotificationsService defaultEcentaNotificationsService) {
         this.defaultEcentaNotificationsService = defaultEcentaNotificationsService;
     }
+
+    public DefaultEcentaNotificationRepositoryImpl getRepository() {
+        return repository;
+    }
+
+    public void setRepository(DefaultEcentaNotificationRepositoryImpl repository) {
+        this.repository = repository;
+    }
+
 }

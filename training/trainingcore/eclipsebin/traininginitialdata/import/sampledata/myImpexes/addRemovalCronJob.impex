@@ -1,0 +1,7 @@
+INSERT EcentaNotificationRemovalCronJob; code[unique = true]              ; job(code)                                ; xDaysOld; sessionLanguage(isocode); sessionCurrency(isocode)
+                                       ; ecentaNotificationRemovalCronJob ; ecentaNotificationsMarkingJobPerformable ; 365     ; en                      ; USD
+
+
+
+
+
