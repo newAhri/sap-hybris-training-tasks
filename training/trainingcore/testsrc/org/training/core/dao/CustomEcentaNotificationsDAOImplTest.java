@@ -4,26 +4,20 @@ import de.hybris.bootstrap.annotations.IntegrationTest;
 import de.hybris.platform.b2b.model.B2BCustomerModel;
 import de.hybris.platform.core.Registry;
 import de.hybris.platform.servicelayer.ServicelayerTransactionalBaseTest;
-import de.hybris.platform.servicelayer.model.ModelService;
-import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
-import de.hybris.platform.servicelayer.search.SearchResult;
-import de.hybris.platform.servicelayer.session.SessionService;
 import de.hybris.platform.servicelayer.user.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.training.core.model.EcentaNotificationModel;
 
 import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.List;
 
 @IntegrationTest
 public class CustomEcentaNotificationsDAOImplTest extends ServicelayerTransactionalBaseTest {
 
-    private CustomEcentaNotificationsDAO dao;
+    private CustomEcentaNotificationDAO dao;
     @Resource
     private FlexibleSearchService flexibleSearchService;
     @Resource
@@ -48,7 +42,7 @@ public class CustomEcentaNotificationsDAOImplTest extends ServicelayerTransactio
 
     @Before
     public void setUp() throws Exception {
-        dao = (CustomEcentaNotificationsDAO) Registry.getApplicationContext().getBean("customEcentaNotificationsDAOImpl");
+        dao = (CustomEcentaNotificationDAO) Registry.getApplicationContext().getBean("customEcentaNotificationsDAOImpl");
 
 
     }

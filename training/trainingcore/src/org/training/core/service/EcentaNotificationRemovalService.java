@@ -5,6 +5,6 @@ import org.training.core.model.EcentaNotificationModel;
 import java.util.Date;
 import java.util.List;
 
-public interface EcentaNotificationsService {
+public interface EcentaNotificationRemovalService {
     List<EcentaNotificationModel> getOldEcentaNotifications(Date oldDate);
 }

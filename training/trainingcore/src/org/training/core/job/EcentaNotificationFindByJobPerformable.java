@@ -13,17 +13,17 @@ import org.training.core.enums.NotificationPriorityEnum;
 import org.training.core.enums.NotificationTypeEnum;
 import org.training.core.model.EcentaNotificationFindByCronJobModel;
 import org.training.core.model.EcentaNotificationModel;
-import org.training.core.service.impl.DefaultEcentaNotificationsFindByService;
+import org.training.core.service.impl.DefaultEcentaNotificationFindByService;
 import org.training.core.dao.queries.EcentaNotificationQueriesConstants;
 
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
 
-public class EcentaNotificationsFindByJobPerformable extends AbstractJobPerformable<EcentaNotificationFindByCronJobModel> {
+public class EcentaNotificationFindByJobPerformable extends AbstractJobPerformable<EcentaNotificationFindByCronJobModel> {
 
     @Resource
-    private DefaultEcentaNotificationsFindByService defaultEcentaNotificationsFindByService;
+    private DefaultEcentaNotificationFindByService ecentaNotificationFindByService;
     @Resource
     private FlexibleSearchService flexibleSearchService;
     private B2BCustomerModel b2BCustomerModel;
@@ -45,21 +45,21 @@ public class EcentaNotificationsFindByJobPerformable extends AbstractJobPerforma
     }
 
     public void getAndPrintEcentaNotificationsByB2BCustomer(B2BCustomerModel b2BCustomer) {
-        final List<EcentaNotificationModel> modelList = defaultEcentaNotificationsFindByService
+        final List<EcentaNotificationModel> modelList = ecentaNotificationFindByService
                 .getAllEcentaNotificatonsByB2BCustomer(b2BCustomer);
         printEcentaNotificationModelList(modelList, "B2BCustomer");
     }
 
     public void getAndPrintEcentaNotificationsByB2BCustomerAndPriority(B2BCustomerModel b2BCustomer
             , NotificationPriorityEnum priorityEnum) {
-        final List<EcentaNotificationModel> modelList = defaultEcentaNotificationsFindByService
+        final List<EcentaNotificationModel> modelList = ecentaNotificationFindByService
                 .getAllEcentaNotificatonsByB2BCustomerAndPriority(b2BCustomer, priorityEnum);
         printEcentaNotificationModelList(modelList, "B2BCustomer and Priority." + priorityEnum.toString());
     }
 
     public void getAndPrintEcentaNotificationsByB2BCustomerAndType(B2BCustomerModel b2BCustomer
             , NotificationTypeEnum typeEnum) {
-        final List<EcentaNotificationModel> modelList = defaultEcentaNotificationsFindByService
+        final List<EcentaNotificationModel> modelList = ecentaNotificationFindByService
                 .getAllEcentaNotificatonsByB2BCustomerAndType(b2BCustomer, typeEnum);
         printEcentaNotificationModelList(modelList, "B2BCustomer and Type." + typeEnum.toString());
     }
@@ -90,12 +90,12 @@ public class EcentaNotificationsFindByJobPerformable extends AbstractJobPerforma
 
 
 
-    public DefaultEcentaNotificationsFindByService getDefaultEcentaNotificationsFindByService() {
-        return defaultEcentaNotificationsFindByService;
+    public DefaultEcentaNotificationFindByService getEcentaNotificationFindByService() {
+        return ecentaNotificationFindByService;
     }
 
-    public void setDefaultEcentaNotificationsFindByService(DefaultEcentaNotificationsFindByService defaultEcentaNotificationsFindByService) {
-        this.defaultEcentaNotificationsFindByService = defaultEcentaNotificationsFindByService;
+    public void setEcentaNotificationFindByService(DefaultEcentaNotificationFindByService ecentaNotificationFindByService) {
+        this.ecentaNotificationFindByService = ecentaNotificationFindByService;
     }
 
     public FlexibleSearchService getFlexibleSearchService() {

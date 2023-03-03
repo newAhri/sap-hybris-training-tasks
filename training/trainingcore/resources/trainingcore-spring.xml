@@ -565,33 +565,31 @@
         <property name="ticketBusinessService" ref="ticketBusinessService"/>
     </bean>
 
-    <alias name="customEcentaNotificationsDAOImpl" alias="customEcentaNotificationsDAO"/>
-    <bean id="customEcentaNotificationsDAOImpl" class="org.training.core.dao.impl.CustomEcentaNotificationsDAOImpl"
+
+    <bean id="customEcentaNotificationDAOImpl" class="org.training.core.dao.impl.CustomEcentaNotificationDAOImpl"
           parent="abstractItemDao">
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
 
-    <alias name="defaultEcentaNotificationsService" alias="ecentaNotificationsService"/>
-    <bean id="defaultEcentaNotificationsService"
-          class="org.training.core.service.impl.DefaultEcentaNotificationsService">
-        <property name="customEcentaNotificationsDAO" ref="customEcentaNotificationsDAO"/>
+    <bean id="defaultEcentaNotificationRemovalService"
+          class="org.training.core.service.impl.DefaultEcentaNotificationRemovalService">
+        <property name="dao" ref="customEcentaNotificationDAOImpl"/>
     </bean>
 
-    <alias name="defaultEcentaNotificationsFindByService" alias="ecentaNotificationsFindByService"/>
-    <bean id="defaultEcentaNotificationsFindByService"
-          class="org.training.core.service.impl.DefaultEcentaNotificationsFindByService">
-        <property name="customEcentaNotificationsDAO" ref="customEcentaNotificationsDAO"/>
+    <bean id="defaultEcentaNotificationFindByService"
+          class="org.training.core.service.impl.DefaultEcentaNotificationFindByService">
+        <property name="dao" ref="customEcentaNotificationDAOImpl"/>
     </bean>
 
-    <bean id="ecentaNotificationsMarkingJobPerformable"
-          class="org.training.core.job.EcentaNotificationsMarkingJobPerformable" parent="abstractJobPerformable">
-        <property name="defaultEcentaNotificationsService" ref="defaultEcentaNotificationsService"/>
+    <bean id="ecentaNotificationRemovalJobPerformable"
+          class="org.training.core.job.EcentaNotificationRemovalJobPerformable" parent="abstractJobPerformable">
+        <property name="ecentaNotificationRemovalService" ref="defaultEcentaNotificationRemovalService"/>
         <property name="repository" ref="defaultEcentaNotificationRepositoryImpl"/>
     </bean>
 
-    <bean name="ecentaNotificationsFindByJobPerformable"
-          class="org.training.core.job.EcentaNotificationsFindByJobPerformable" parent="abstractJobPerformable">
-        <property name="defaultEcentaNotificationsFindByService" ref="defaultEcentaNotificationsFindByService"/>
+    <bean name="ecentaNotificationFindByJobPerformable"
+          class="org.training.core.job.EcentaNotificationFindByJobPerformable" parent="abstractJobPerformable">
+        <property name="ecentaNotificationFindByService" ref="defaultEcentaNotificationFindByService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
 
@@ -600,7 +598,6 @@
         <property name="modelService" ref="modelService"/>
     </bean>
 
-    <alias name="defaultEcentaNotificationRepositoryImpl" alias="repository"/>
     <bean id="defaultEcentaNotificationRepositoryImpl"
           class="org.training.core.crud.impl.DefaultEcentaNotificationRepositoryImpl">
         <property name="modelService" ref="modelService"/>

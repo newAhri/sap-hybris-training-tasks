@@ -5,7 +5,7 @@ import de.hybris.platform.servicelayer.internal.dao.AbstractItemDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 import de.hybris.platform.servicelayer.search.SearchResult;
-import org.training.core.dao.CustomEcentaNotificationsDAO;
+import org.training.core.dao.CustomEcentaNotificationDAO;
 import org.training.core.dao.queries.EcentaNotificationQueriesConstants;
 import org.training.core.enums.NotificationPriorityEnum;
 import org.training.core.enums.NotificationTypeEnum;
@@ -14,7 +14,7 @@ import org.training.core.model.EcentaNotificationModel;
 import javax.annotation.Resource;
 import java.util.*;
 
-public class CustomEcentaNotificationsDAOImpl extends AbstractItemDao implements CustomEcentaNotificationsDAO {
+public class CustomEcentaNotificationDAOImpl extends AbstractItemDao implements CustomEcentaNotificationDAO {
 
     @Resource
     private FlexibleSearchService flexibleSearchService;
