@@ -182,4 +182,10 @@
 	</bean>
 
 	<bean id="genderData" class="org.training.facades.product.data.GenderData" scope="prototype"/>
+
+	<bean name="ecentaNotificaionPopulator" class="org.training.facades.populators.EcentaNotificationPopulator">
+		<property name="customerConverter" ref="customerConverter"/>
+		<property name="b2BUnitConverter" ref="b2BUnitConverter"/>
+	</bean>
+
 </beans>
