@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6 мар. 2023 г., 16:12:22                    ---
+ * --- Generated at 7 мар. 2023 г., 13:03:24                    ---
  * ----------------------------------------------------------------
  */
 package org.training.facades.constants;
