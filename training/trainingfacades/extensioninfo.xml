@@ -4,7 +4,7 @@
 --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
         	
     
-    <extension abstractclassprefix="Generated" classprefix="TrainingFacades" name="trainingfacades">
+    <extension abstractclassprefix="Generated" classprefix="TrainingFacades" name="trainingfacades" usemaven="true">
                 		
         
         <!-- you should add all required extensions to this list, except platform 
@@ -15,7 +15,10 @@
                 		
         
         <requires-extension name="trainingcore"/>
-                		
+
+        <requires-extension name="commercefacades"/>
+        <requires-extension name="b2bcommercefacades"/>
+
         
         <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="org.training.facades"/>
                 		

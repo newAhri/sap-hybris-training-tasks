@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 public class EcentaNotificationRemovalJobPerformable extends AbstractJobPerformable<EcentaNotificationRemovalCronJobModel> {
 
     @Resource
-    protected DefaultEcentaNotificationRemovalService ecentaNotificationRemovalService;
+    protected DefaultEcentaNotificationRemovalService defaultEcentaNotificationRemovalService;
     @Resource
-    private DefaultEcentaNotificationRepositoryImpl repository;
+    private DefaultEcentaNotificationRepositoryImpl defaultEcentaNotificationRepositoryImpl;
 
     private final static Logger LOG = Logger.getLogger(EcentaNotificationRemovalJobPerformable.class.getName());
 
@@ -33,7 +33,7 @@ public class EcentaNotificationRemovalJobPerformable extends AbstractJobPerforma
             final Calendar cal = Calendar.getInstance();
             cal.add(Calendar.DAY_OF_MONTH, -amountOfDaysOld);
             final Date oldDate = cal.getTime();
-            final List<EcentaNotificationModel> ecentaNotificationModelListToBeMarked = getEcentaNotificationRemovalService().getOldEcentaNotifications(oldDate);
+            final List<EcentaNotificationModel> ecentaNotificationModelListToBeMarked = getDefaultEcentaNotificationRemovalService().getOldEcentaNotifications(oldDate);
 
             int count = 0;
             if (!CollectionUtils.isEmpty(ecentaNotificationModelListToBeMarked)) {
@@ -42,7 +42,7 @@ public class EcentaNotificationRemovalJobPerformable extends AbstractJobPerforma
                     ecentaNotificationModel.setRead(true);
                     count++;
                 }
-                repository.saveNewOrUpdateEcentaNotificationList(ecentaNotificationModelListToBeMarked);
+                defaultEcentaNotificationRepositoryImpl.saveNewOrUpdateEcentaNotificationList(ecentaNotificationModelListToBeMarked);
                 LOG.info("Marked Ecenta Notifications: " + count);
             } else {
                 LOG.info("No EcentaNotification to be marked");
@@ -55,19 +55,19 @@ public class EcentaNotificationRemovalJobPerformable extends AbstractJobPerforma
         }
     }
 
-    public DefaultEcentaNotificationRemovalService getEcentaNotificationRemovalService() {
-        return ecentaNotificationRemovalService;
+    public DefaultEcentaNotificationRemovalService getDefaultEcentaNotificationRemovalService() {
+        return defaultEcentaNotificationRemovalService;
     }
 
-    public void setEcentaNotificationRemovalService(DefaultEcentaNotificationRemovalService ecentaNotificationRemovalService) {
-        this.ecentaNotificationRemovalService = ecentaNotificationRemovalService;
+    public void setDefaultEcentaNotificationRemovalService(DefaultEcentaNotificationRemovalService defaultEcentaNotificationRemovalService) {
+        this.defaultEcentaNotificationRemovalService = defaultEcentaNotificationRemovalService;
     }
 
-    public DefaultEcentaNotificationRepositoryImpl getRepository() {
-        return repository;
+    public DefaultEcentaNotificationRepositoryImpl getDefaultEcentaNotificationRepositoryImpl() {
+        return defaultEcentaNotificationRepositoryImpl;
     }
 
-    public void setRepository(DefaultEcentaNotificationRepositoryImpl repository) {
-        this.repository = repository;
+    public void setDefaultEcentaNotificationRepositoryImpl(DefaultEcentaNotificationRepositoryImpl defaultEcentaNotificationRepositoryImpl) {
+        this.defaultEcentaNotificationRepositoryImpl = defaultEcentaNotificationRepositoryImpl;
     }
 }

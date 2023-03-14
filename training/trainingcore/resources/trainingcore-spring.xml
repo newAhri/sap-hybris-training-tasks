@@ -583,13 +583,13 @@
 
     <bean id="ecentaNotificationRemovalJobPerformable"
           class="org.training.core.job.EcentaNotificationRemovalJobPerformable" parent="abstractJobPerformable">
-        <property name="ecentaNotificationRemovalService" ref="defaultEcentaNotificationRemovalService"/>
-        <property name="repository" ref="defaultEcentaNotificationRepositoryImpl"/>
+        <property name="defaultEcentaNotificationRemovalService" ref="defaultEcentaNotificationRemovalService"/>
+        <property name="defaultEcentaNotificationRepositoryImpl" ref="defaultEcentaNotificationRepositoryImpl"/>
     </bean>
 
     <bean name="ecentaNotificationFindByJobPerformable"
           class="org.training.core.job.EcentaNotificationFindByJobPerformable" parent="abstractJobPerformable">
-        <property name="ecentaNotificationFindByService" ref="defaultEcentaNotificationFindByService"/>
+        <property name="defaultEcentaNotificationFindByService" ref="defaultEcentaNotificationFindByService"/>
         <property name="flexibleSearchService" ref="flexibleSearchService"/>
     </bean>
 
