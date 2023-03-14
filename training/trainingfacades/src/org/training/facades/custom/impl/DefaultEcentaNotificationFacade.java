@@ -3,7 +3,7 @@ package org.training.facades.custom.impl;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 import org.training.core.model.EcentaNotificationModel;
 import org.training.facades.custom.EcentaNotificationFacade;
-import org.training.facades.data.EcentaNotificationData;
+import org.training.facades.notification.data.EcentaNotificationData;
 
 public class DefaultEcentaNotificationFacade implements EcentaNotificationFacade {
     private Converter<EcentaNotificationModel, EcentaNotificationData> ecentaNotificationConverter;

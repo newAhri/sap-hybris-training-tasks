@@ -13,7 +13,6 @@ import org.training.facades.notification.data.EcentaNotificationData;
 public class EcentaNotificationPopulator implements Populator<EcentaNotificationModel, EcentaNotificationData> {
 
     private Converter<UserModel, CustomerData> customerConverter;
-
     private Converter<B2BUnitModel, B2BUnitData> b2BUnitConverter;
 
     @Override
@@ -45,5 +44,7 @@ public class EcentaNotificationPopulator implements Populator<EcentaNotification
     public void setB2BUnitConverter(Converter<B2BUnitModel, B2BUnitData> b2BUnitConverter) {
         this.b2BUnitConverter = b2BUnitConverter;
     }
+
+
 
 }
