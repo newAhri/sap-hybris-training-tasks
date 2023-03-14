@@ -13,7 +13,7 @@ import org.training.facades.notification.data.EcentaNotificationData;
 public class EcentaNotificationPopulator implements Populator<EcentaNotificationModel, EcentaNotificationData> {
 
     private Converter<UserModel, CustomerData> customerConverter;
-    private Converter<B2BUnitModel, B2BUnitData> b2BUnitConverter;
+    private Converter<B2BUnitModel, B2BUnitData> b2bUnitConverter;
 
     @Override
     public void populate(EcentaNotificationModel source, EcentaNotificationData target) throws ConversionException {
@@ -26,7 +26,7 @@ public class EcentaNotificationPopulator implements Populator<EcentaNotification
         target.setDeleted(source.getDeleted());
         target.setTitle(source.getTitle());
         target.setB2bCustomer(customerConverter.convert(source.getB2bCustomer()));
-        target.setB2bUnit(b2BUnitConverter.convert(source.getB2bUnit()));
+        target.setB2bUnit(b2bUnitConverter.convert(source.getB2bUnit()));
     }
 
     public Converter<UserModel, CustomerData> getCustomerConverter() {
@@ -37,12 +37,12 @@ public class EcentaNotificationPopulator implements Populator<EcentaNotification
         this.customerConverter = customerConverter;
     }
 
-    public Converter<B2BUnitModel, B2BUnitData> getB2BUnitConverter() {
-        return b2BUnitConverter;
+    public Converter<B2BUnitModel, B2BUnitData> getB2bUnitConverter() {
+        return b2bUnitConverter;
     }
 
-    public void setB2BUnitConverter(Converter<B2BUnitModel, B2BUnitData> b2BUnitConverter) {
-        this.b2BUnitConverter = b2BUnitConverter;
+    public void setB2bUnitConverter(Converter<B2BUnitModel, B2BUnitData> b2bUnitConverter) {
+        this.b2bUnitConverter = b2bUnitConverter;
     }
 
 

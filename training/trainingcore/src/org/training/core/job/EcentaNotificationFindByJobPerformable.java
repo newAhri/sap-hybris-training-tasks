@@ -23,7 +23,7 @@ import java.util.List;
 public class EcentaNotificationFindByJobPerformable extends AbstractJobPerformable<EcentaNotificationFindByCronJobModel> {
 
     @Resource
-    private DefaultEcentaNotificationFindByService ecentaNotificationFindByService;
+    private DefaultEcentaNotificationFindByService defaultEcentaNotificationFindByService;
     @Resource
     private FlexibleSearchService flexibleSearchService;
     private B2BCustomerModel b2BCustomerModel;
@@ -45,21 +45,21 @@ public class EcentaNotificationFindByJobPerformable extends AbstractJobPerformab
     }
 
     public void getAndPrintEcentaNotificationsByB2BCustomer(B2BCustomerModel b2BCustomer) {
-        final List<EcentaNotificationModel> modelList = ecentaNotificationFindByService
+        final List<EcentaNotificationModel> modelList = defaultEcentaNotificationFindByService
                 .getAllEcentaNotificatonsByB2BCustomer(b2BCustomer);
         printEcentaNotificationModelList(modelList, "B2BCustomer");
     }
 
     public void getAndPrintEcentaNotificationsByB2BCustomerAndPriority(B2BCustomerModel b2BCustomer
             , NotificationPriorityEnum priorityEnum) {
-        final List<EcentaNotificationModel> modelList = ecentaNotificationFindByService
+        final List<EcentaNotificationModel> modelList = defaultEcentaNotificationFindByService
                 .getAllEcentaNotificatonsByB2BCustomerAndPriority(b2BCustomer, priorityEnum);
         printEcentaNotificationModelList(modelList, "B2BCustomer and Priority." + priorityEnum.toString());
     }
 
     public void getAndPrintEcentaNotificationsByB2BCustomerAndType(B2BCustomerModel b2BCustomer
             , NotificationTypeEnum typeEnum) {
-        final List<EcentaNotificationModel> modelList = ecentaNotificationFindByService
+        final List<EcentaNotificationModel> modelList = defaultEcentaNotificationFindByService
                 .getAllEcentaNotificatonsByB2BCustomerAndType(b2BCustomer, typeEnum);
         printEcentaNotificationModelList(modelList, "B2BCustomer and Type." + typeEnum.toString());
     }
@@ -89,13 +89,12 @@ public class EcentaNotificationFindByJobPerformable extends AbstractJobPerformab
     }
 
 
-
-    public DefaultEcentaNotificationFindByService getEcentaNotificationFindByService() {
-        return ecentaNotificationFindByService;
+    public DefaultEcentaNotificationFindByService getDefaultEcentaNotificationFindByService() {
+        return defaultEcentaNotificationFindByService;
     }
 
-    public void setEcentaNotificationFindByService(DefaultEcentaNotificationFindByService ecentaNotificationFindByService) {
-        this.ecentaNotificationFindByService = ecentaNotificationFindByService;
+    public void setDefaultEcentaNotificationFindByService(DefaultEcentaNotificationFindByService defaultEcentaNotificationFindByService) {
+        this.defaultEcentaNotificationFindByService = defaultEcentaNotificationFindByService;
     }
 
     public FlexibleSearchService getFlexibleSearchService() {

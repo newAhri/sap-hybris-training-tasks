@@ -185,7 +185,7 @@
 
 	<bean name="ecentaNotificaionPopulator" class="org.training.facades.populators.EcentaNotificationPopulator">
 		<property name="customerConverter" ref="customerConverter"/>
-		<property name="b2BUnitConverter" ref="b2bUnitConverter"/>
+		<property name="b2bUnitConverter" ref="b2bUnitConverter"/>
 	</bean>
 
 	<alias name="defaultEcentaNotificationConverter" alias="ecentaNotificationConverter"/>

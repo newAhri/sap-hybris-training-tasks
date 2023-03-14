@@ -1,24 +1,41 @@
 package org.training.facades.custom;
 
-import de.hybris.bootstrap.annotations.IntegrationTest;
-import de.hybris.platform.core.PK;
-import de.hybris.platform.core.model.user.UserModel;
+import de.hybris.bootstrap.annotations.UnitTest;
 import de.hybris.platform.servicelayer.ServicelayerTransactionalBaseTest;
-import de.hybris.platform.servicelayer.model.ModelService;
+import de.hybris.platform.servicelayer.dto.converter.Converter;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.training.core.model.EcentaNotificationModel;
+import org.training.facades.custom.impl.DefaultEcentaNotificationFacade;
+import org.training.facades.notification.data.EcentaNotificationData;
 
-import javax.annotation.Resource;
+import static org.mockito.BDDMockito.given;
 
-@IntegrationTest
+@UnitTest
 public class DefaultEcentaNotificationFacadeTest extends ServicelayerTransactionalBaseTest {
 
-    @Resource
-    private ModelService modelService;
+    @Mock
+    private Converter<EcentaNotificationModel, EcentaNotificationData> ecentaNotificationConverter;
+    @Mock
+    private EcentaNotificationData ecentaNotificationData;
+    @Mock
+    private EcentaNotificationModel ecentaNotificationModel;
 
-    /*@Test
+    private DefaultEcentaNotificationFacade defaultEcentaNotificationFacade;
+
+
+    @Before
+    public void setUp(){
+        MockitoAnnotations.initMocks(this);
+        defaultEcentaNotificationFacade = new DefaultEcentaNotificationFacade();
+        defaultEcentaNotificationFacade.setEcentaNotificationConverter(ecentaNotificationConverter);
+    }
+
+    @Test
     public void testFacade(){
-        EcentaNotificationModel model = modelService.get(PK.parse())
-    }*/
+        given(defaultEcentaNotificationFacade.getEcentaNotificationData(ecentaNotificationModel))
+                .willReturn(ecentaNotificationData);
+    }
 }
