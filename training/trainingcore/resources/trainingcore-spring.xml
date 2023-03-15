@@ -603,4 +603,11 @@
         <property name="modelService" ref="modelService"/>
     </bean>
 
+    <bean id="uniqueIDAlphanumericKeyGenerator" class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator">
+        <property name="key" value="unique_notification_id"/>
+        <property name="digits" value="9"/>
+        <property name="start" value="100000000"/>
+        <property name="type" value="alphanumeric"/>
+    </bean>
+
 </beans>
