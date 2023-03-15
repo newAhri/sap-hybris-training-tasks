@@ -603,11 +603,18 @@
         <property name="modelService" ref="modelService"/>
     </bean>
 
-    <bean id="uniqueIDAlphanumericKeyGenerator" class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator">
-        <property name="key" value="unique_notification_id"/>
+    <bean id="uniqueAlphanumericIDKeyGenerator"
+          class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator">
+        <property name="key" value="unique_alphanumeric_id"/>
         <property name="digits" value="9"/>
         <property name="start" value="100000000"/>
         <property name="type" value="alphanumeric"/>
+    </bean>
+
+    <bean id="ecentaNotificationInitDefaultsInterceptor"
+          class="org.training.core.interceptors.EcentaNotificationInitDefaultsInterceptor"
+          autowire="byName">
+        <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
     </bean>
 
 </beans>
