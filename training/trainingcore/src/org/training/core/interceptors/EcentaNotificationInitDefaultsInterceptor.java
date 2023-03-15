@@ -3,6 +3,7 @@ package org.training.core.interceptors;
 import de.hybris.platform.servicelayer.interceptor.InitDefaultsInterceptor;
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
+import de.hybris.platform.servicelayer.interceptor.PersistenceOperation;
 import de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator;
 import org.training.core.model.EcentaNotificationModel;
 
@@ -13,8 +14,8 @@ public class EcentaNotificationInitDefaultsInterceptor implements InitDefaultsIn
     public void onInitDefaults(Object o, InterceptorContext interceptorContext) throws InterceptorException {
         if (o instanceof EcentaNotificationModel){
             EcentaNotificationModel model = (EcentaNotificationModel) o;
-            //model.setId(uniqueAlphanumericIDKeyGenerator.generate());
-
+            model.setId((String) uniqueAlphanumericIDKeyGenerator.generate());
+            interceptorContext.registerElementFor(model, PersistenceOperation.SAVE);
         }
     }
 
