@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 14 мар. 2023 г., 12:58:19                   ---
+ * --- Generated at 15 мар. 2023 г., 17:48:37                   ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
@@ -10,6 +10,7 @@ import de.hybris.platform.b2b.jalo.B2BCustomer;
 import de.hybris.platform.constants.CoreConstants;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item.AttributeMode;
+import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.enumeration.EnumerationValue;
 import de.hybris.platform.jalo.order.Order;
@@ -230,45 +231,35 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute.
 	 * @return the id - An ID used to uniquely identify this entity
 	 */
-	public Integer getId(final SessionContext ctx)
+	public String getId(final SessionContext ctx)
 	{
-		return (Integer)getProperty( ctx, ID);
+		return (String)getProperty( ctx, ID);
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute.
 	 * @return the id - An ID used to uniquely identify this entity
 	 */
-	public Integer getId()
+	public String getId()
 	{
 		return getId( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute. 
-	 * @return the id - An ID used to uniquely identify this entity
-	 */
-	public int getIdAsPrimitive(final SessionContext ctx)
-	{
-		Integer value = getId( ctx );
-		return value != null ? value.intValue() : 0;
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>EcentaNotification.id</code> attribute. 
-	 * @return the id - An ID used to uniquely identify this entity
-	 */
-	public int getIdAsPrimitive()
-	{
-		return getIdAsPrimitive( getSession().getSessionContext() );
 	}
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
 	 * @param value the id - An ID used to uniquely identify this entity
 	 */
-	public void setId(final SessionContext ctx, final Integer value)
+	protected void setId(final SessionContext ctx, final String value)
 	{
+		if ( ctx == null) 
+		{
+			throw new JaloInvalidParameterException( "ctx is null", 0 );
+		}
+		// initial-only attribute: make sure this attribute can be set during item creation only
+		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
+		{
+			throw new JaloInvalidParameterException( "attribute '"+ID+"' is not changeable", 0 );
+		}
 		setProperty(ctx, ID,value);
 	}
 	
@@ -276,25 +267,7 @@ public abstract class GeneratedEcentaNotification extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
 	 * @param value the id - An ID used to uniquely identify this entity
 	 */
-	public void setId(final Integer value)
-	{
-		setId( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
-	 * @param value the id - An ID used to uniquely identify this entity
-	 */
-	public void setId(final SessionContext ctx, final int value)
-	{
-		setId( ctx,Integer.valueOf( value ) );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>EcentaNotification.id</code> attribute. 
-	 * @param value the id - An ID used to uniquely identify this entity
-	 */
-	public void setId(final int value)
+	protected void setId(final String value)
 	{
 		setId( getSession().getSessionContext(), value );
 	}

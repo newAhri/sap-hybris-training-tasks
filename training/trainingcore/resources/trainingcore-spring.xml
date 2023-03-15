@@ -603,4 +603,35 @@
         <property name="modelService" ref="modelService"/>
     </bean>
 
+    <bean id="uniqueAlphanumericIDKeyGenerator"
+          class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator">
+        <property name="key" value="unique_alphanumeric_id"/>
+        <property name="digits" value="9"/>
+        <property name="start" value="100000000"/>
+        <property name="type" value="alphanumeric"/>
+    </bean>
+
+    <bean id="ecentaNotificationInitDefaultsInterceptor"
+          class="org.training.core.interceptors.EcentaNotificationInitDefaultsInterceptor"
+          autowire="byName">
+        <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
+    </bean>
+
+    <bean id="ecentaNotificationPrepareInterceptor"
+          class="org.training.core.interceptors.EcentaNotificationPrepareInterceptor"
+          autowire="byName">
+    </bean>
+
+    <bean id="ecentaNotificationInitDefaultsInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="ecentaNotificationInitDefaultsInterceptor"/>
+        <property name="typeCode" value="EcentaNotification"/>
+    </bean>
+
+    <bean id="ecentaNotificationPrepareInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="ecentaNotificationPrepareInterceptor"/>
+        <property name="typeCode" value="EcentaNotification"/>
+    </bean>
+
 </beans>

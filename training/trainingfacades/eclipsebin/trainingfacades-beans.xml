@@ -14,7 +14,7 @@
 	</bean>
 
 	<bean class="org.training.facades.notification.data.EcentaNotificationData">
-		<property name="id" type="java.lang.Integer"/>
+		<property name="id" type="java.lang.String"/>
 		<property name="b2bCustomer"
 				  type="de.hybris.platform.commercefacades.user.data.CustomerData"/>
 		<property name="date" type="java.util.Date"/>

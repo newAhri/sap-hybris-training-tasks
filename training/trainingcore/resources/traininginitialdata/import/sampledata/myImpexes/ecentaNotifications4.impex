@@ -1,0 +1,2 @@
+INSERT_UPDATE EcentaNotification;id[unique=true];b2bCustomer(email);date[dateFormat=('dd.MM.yyyy')];type(code);message[cellDecorator=MessageCellDecorator];priority(code);read;deleted;title[translator=org.training.core.translator.MessageValueTranslator]
+                                ;;william.hunter@pronto-hw.com;14.02.2023;ORDERMANAGEMENT;Your order has been managed!;HIGH;false;true;Order management

@@ -139,9 +139,9 @@
                 <deployment table="notifications2" typecode="11001"/>
 
                 <attributes>
-                    <attribute qualifier="id" type="java.lang.Integer">
+                    <attribute qualifier="id" type="java.lang.String">
                         <description>An ID used to uniquely identify this entity</description>
-                        <modifiers optional="false" initial="true" unique="true"/>
+                        <modifiers optional="true" initial="true" unique="true" write="false"/>
                         <persistence type="property"/>
                     </attribute>
 
