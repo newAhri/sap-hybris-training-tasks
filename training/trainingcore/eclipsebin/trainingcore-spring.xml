@@ -617,4 +617,16 @@
         <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
     </bean>
 
+    <bean id="ecentaNotificationPrepareInterceptor"
+          class="org.training.core.interceptors.EcentaNotificationPrepareInterceptor"
+          autowire="byName">
+    </bean>
+
+    <bean id="ecentaNotificationInitDefaultsInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.InitDefaultsInterceptor">
+        <property name="interceptor" value="org.training.core.interceptors.EcentaNotificationInitDefaultsInterceptor"/>
+        <property name="typeCode" value="EcentaNotification"/>
+
+    </bean>
+
 </beans>
