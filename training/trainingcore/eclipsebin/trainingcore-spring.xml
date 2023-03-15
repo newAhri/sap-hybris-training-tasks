@@ -615,7 +615,6 @@
           class="org.training.core.interceptors.EcentaNotificationInitDefaultsInterceptor"
           autowire="byName">
         <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
-
     </bean>
 
 </beans>
