@@ -141,7 +141,7 @@
                 <attributes>
                     <attribute qualifier="id" type="java.lang.String">
                         <description>An ID used to uniquely identify this entity</description>
-                        <modifiers optional="true" initial="true" unique="true" write="false"/>
+                        <modifiers unique="true" read="true" write="false" initial="true" optional="false"/>
                         <persistence type="property"/>
                     </attribute>
 
@@ -203,6 +203,7 @@
 
                 </attributes>
             </itemtype>
+
         </typegroup>
         <typegroup name="CronJobs">
             <itemtype code="EcentaNotificationRemovalCronJob" extends="CronJob"
@@ -223,6 +224,42 @@
                       autocreate="true" generate="true">
             </itemtype>
 
+        </typegroup>
+
+        <typegroup name="Products">
+            <itemtype code="ServiceProduct" autocreate="true" generate="true">
+                <deployment table="ServiceProducts" typecode="11002"/>
+                <custom-properties>
+                    <property name="catalogItemType">
+                        <value>java.lang.Boolean.TRUE</value>
+                    </property>
+                    <property name="catalogVersionAttributeQualifier">
+                        <value>"catalogversion"</value>
+                    </property>
+                    <property name="uniqueKeyAttributeQualifier">
+                        <value>"id"</value>
+                    </property>
+                </custom-properties>
+                <attributes>
+                    <attribute qualifier="id" type="java.lang.String">
+                        <modifiers unique="true" read="true" write="false" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="java.lang.String">
+                        <modifiers read="true" write="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="creationDate" type="java.util.Date">
+                        <modifiers read="true" write="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="java.lang.String">
+                        <modifiers read="true" write="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+
+            </itemtype>
         </typegroup>
     </itemtypes>
 </items>

@@ -1,4 +1,4 @@
-package org.training.core.interceptors;
+package org.training.core.interceptors.EcentaNotification;
 
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
