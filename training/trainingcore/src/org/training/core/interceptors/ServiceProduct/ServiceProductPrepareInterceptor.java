@@ -1,22 +1,27 @@
-package org.training.core.interceptors;
+package org.training.core.interceptors.ServiceProduct;
 
-import de.hybris.platform.servicelayer.interceptor.InitDefaultsInterceptor;
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.PersistenceOperation;
+import de.hybris.platform.servicelayer.interceptor.PrepareInterceptor;
 import de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator;
-import org.training.core.model.EcentaNotificationModel;
+import org.training.core.model.ServiceProductModel;
 
-public class EcentaNotificationInitDefaultsInterceptor implements InitDefaultsInterceptor {
+import java.util.Date;
+
+public class ServiceProductPrepareInterceptor implements PrepareInterceptor {
+
     private PersistentKeyGenerator uniqueAlphanumericIDKeyGenerator;
 
     @Override
-    public void onInitDefaults(Object o, InterceptorContext interceptorContext) throws InterceptorException {
-        if (o instanceof EcentaNotificationModel){
-            EcentaNotificationModel model = (EcentaNotificationModel) o;
-            model.setId((String) uniqueAlphanumericIDKeyGenerator.generate());
+    public void onPrepare(Object o, InterceptorContext interceptorContext) throws InterceptorException {
+        if(o instanceof ServiceProductModel){
+            ServiceProductModel model = new ServiceProductModel();
+            model.setId((String)uniqueAlphanumericIDKeyGenerator.generate());
+            model.setCreationDate(new Date());
             interceptorContext.registerElementFor(model, PersistenceOperation.SAVE);
         }
+
     }
 
     public PersistentKeyGenerator getUniqueAlphanumericIDKeyGenerator() {

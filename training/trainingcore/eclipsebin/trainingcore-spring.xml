@@ -612,13 +612,13 @@
     </bean>
 
     <bean id="ecentaNotificationInitDefaultsInterceptor"
-          class="org.training.core.interceptors.EcentaNotificationInitDefaultsInterceptor"
+          class="org.training.core.interceptors.EcentaNotification.EcentaNotificationInitDefaultsInterceptor"
           autowire="byName">
         <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
     </bean>
 
     <bean id="ecentaNotificationPrepareInterceptor"
-          class="org.training.core.interceptors.EcentaNotificationPrepareInterceptor"
+          class="org.training.core.interceptors.EcentaNotification.EcentaNotificationPrepareInterceptor"
           autowire="byName">
     </bean>
 
@@ -632,6 +632,30 @@
           class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
         <property name="interceptor" ref="ecentaNotificationPrepareInterceptor"/>
         <property name="typeCode" value="EcentaNotification"/>
+    </bean>
+
+    <bean id="serviceProductPrepareInterceptor"
+          class="org.training.core.interceptors.ServiceProduct.ServiceProductPrepareInterceptor"
+          autowire="byName">
+        <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
+    </bean>
+
+    <bean id="serviceProductInitDefaultsInterceptor"
+          class="org.training.core.interceptors.ServiceProduct.ServiceProductInitDefaultsInterceptor"
+          autowire="byName">
+        <property name="uniqueAlphanumericIDKeyGenerator" ref="uniqueAlphanumericIDKeyGenerator"/>
+    </bean>
+
+    <bean id="serviceProductPrepareInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="serviceProductPrepareInterceptor"/>
+        <property name="typeCode" value="ServiceProduct"/>
+    </bean>
+
+    <bean id="serviceProductInitDefaultsInterceptorMapping"
+          class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="serviceProductInitDefaultsInterceptor"/>
+        <property name="typeCode" value="ServiceProduct"/>
     </bean>
 
 </beans>

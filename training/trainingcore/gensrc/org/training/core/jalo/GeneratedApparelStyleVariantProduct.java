@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 15 мар. 2023 г., 17:48:37                   ---
+ * --- Generated at 16 мар. 2023 г., 10:55:21                   ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
