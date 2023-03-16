@@ -1,4 +1,4 @@
-INSERT_UPDATE EcentaNotification;id[unique=true];b2bCustomer(email);date[dateFormat=('dd.MM.yyyy')];type(code);message[cellDecorator=MessageCellDecorator];priority(code);read;deleted;title[translator=org.training.core.translator.MessageValueTranslator]
+INSERT_UPDATE EcentaNotification;id;b2bCustomer(email);date[dateFormat=('dd.MM.yyyy')];type(code);message[cellDecorator=MessageCellDecorator];priority(code);read;deleted;title[translator=org.training.core.translator.MessageValueTranslator]
                                 ;9;william.hunter@pronto-hw.com;14.02.2023;ORDERMANAGEMENT;Your order has been managed!;LOW;false;false;Order management
                                 ;10;william.hunter@pronto-hw.com;17.03.2020;SERVICETICKETS;Technical maintanance is planned on 25th of January!;NORMAL;false;false;News
                                 ;11;william.hunter@pronto-hw.com;18.04.2023;WORKFLOW;Please change your password!;HIGH;false;false;Workflow
