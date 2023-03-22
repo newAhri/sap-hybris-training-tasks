@@ -261,5 +261,13 @@
 
             </itemtype>
         </typegroup>
+
+        <typegroup name="Components">
+            <itemtype code="EcentaNotificationListComponent" extends="SimpleCMSComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="org.training.core.jalo.components.CustomEcentaNotificationComponent">
+                <description>Used to display Ecenta notification list on users homepage</description>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>

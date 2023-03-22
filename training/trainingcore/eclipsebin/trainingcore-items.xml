@@ -50,7 +50,7 @@
             <targetElement type="Order" cardinality="many"
                            qualifier="orders" collectiontype="set">
                 <modifiers read="true" write="true"
-                           optional="true" partof="true" search="true"/>
+                           optional="true" partof="true" search="true" />
             </targetElement>
         </relation>
     </relations>
@@ -139,9 +139,9 @@
                 <deployment table="notifications2" typecode="11001"/>
 
                 <attributes>
-                    <attribute qualifier="id" type="java.lang.String">
+                    <attribute qualifier="id" type="java.lang.Integer">
                         <description>An ID used to uniquely identify this entity</description>
-                        <modifiers unique="true" read="true" write="false" initial="true" optional="false"/>
+                        <modifiers optional="false" initial="true" unique="true"/>
                         <persistence type="property"/>
                     </attribute>
 
@@ -176,14 +176,12 @@
                     </attribute>
 
                     <attribute qualifier="read" type="java.lang.Boolean">
-                        <description>Is notification read</description>
                         <modifiers optional="true" write="true"/>
                         <defaultvalue>Boolean.FALSE</defaultvalue>
                         <persistence type="property"/>
                     </attribute>
 
                     <attribute qualifier="deleted" type="java.lang.Boolean">
-                        <description>Old notification deletion mark</description>
                         <modifiers optional="true" write="true"/>
                         <defaultvalue>Boolean.FALSE</defaultvalue>
                         <persistence type="property"/>
@@ -195,71 +193,17 @@
                         <persistence type="property"/>
                     </attribute>
 
-                    <attribute qualifier="b2bUnit" type="B2BUnit">
-                        <description>Company to which notification should be sent</description>
-                        <modifiers optional="true" write="false" read="true" unique="false"/>
-                        <persistence type="dynamic" attributeHandler="ecentaNotificationB2BUnitHandler"/>
-                    </attribute>
-
                 </attributes>
             </itemtype>
-
-        </typegroup>
-        <typegroup name="CronJobs">
-            <itemtype code="EcentaNotificationRemovalCronJob" extends="CronJob"
-                      jaloclass="org.training.core.jalo.EcentaNotificationRemovalCronJob"
-                      autocreate="true" generate="true">
-                <attributes>
-                    <attribute qualifier="xDaysOld" type="int">
-                        <modifiers read="true" write="true" optional="false"/>
-                        <defaultvalue>Integer.valueOf(365)</defaultvalue>
-                        <description>If a notification is older than a year and unread mark them as read and deleted
-                        </description>
-                        <persistence type="property"/>
-                    </attribute>
-                </attributes>
-            </itemtype>
-            <itemtype code="EcentaNotificationFindByCronJob" extends="CronJob"
-                      jaloclass="org.training.core.jalo.EcentaNotificationFindByCronJob"
-                      autocreate="true" generate="true">
-            </itemtype>
-
         </typegroup>
 
-        <typegroup name="Products">
-            <itemtype code="ServiceProduct" autocreate="true" generate="true">
-                <deployment table="ServiceProducts" typecode="11002"/>
-                <custom-properties>
-                    <property name="catalogItemType">
-                        <value>java.lang.Boolean.TRUE</value>
-                    </property>
-                    <property name="catalogVersionAttributeQualifier">
-                        <value>"catalogversion"</value>
-                    </property>
-                    <property name="uniqueKeyAttributeQualifier">
-                        <value>"id"</value>
-                    </property>
-                </custom-properties>
-                <attributes>
-                    <attribute qualifier="id" type="java.lang.String">
-                        <modifiers unique="true" read="true" write="false" initial="true" optional="false"/>
-                        <persistence type="property"/>
-                    </attribute>
-                    <attribute qualifier="name" type="java.lang.String">
-                        <modifiers read="true" write="true" initial="true" optional="false"/>
-                        <persistence type="property"/>
-                    </attribute>
-                    <attribute qualifier="creationDate" type="java.util.Date">
-                        <modifiers read="true" write="true" initial="true" optional="false"/>
-                        <persistence type="property"/>
-                    </attribute>
-                    <attribute qualifier="description" type="java.lang.String">
-                        <modifiers read="true" write="true" initial="true" optional="false"/>
-                        <persistence type="property"/>
-                    </attribute>
-                </attributes>
-
+        <typegroup name="Components">
+            <itemtype code="EcentaNotificationListComponent" extends="SimpleCMSComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="org.training.core.jalo.components.CustomEcentaNotificationComponent">
+                <description>Used to display Ecenta notification list on users homepage</description>
             </itemtype>
         </typegroup>
+
     </itemtypes>
 </items>
