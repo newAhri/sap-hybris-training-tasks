@@ -81,6 +81,15 @@ public class CustomEcentaNotificationDAOImpl extends AbstractItemDao implements 
                 , EcentaNotificationModel.class);
     }
 
+    @Override
+    public List<EcentaNotificationModel> findNotificationByID(String id) {
+        final Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+        return doSearch(EcentaNotificationQueriesConstants.SELECT_ECENTA_NOTIF_BY_ID
+                , params
+                , EcentaNotificationModel.class);
+    }
+
     public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService) {
         this.flexibleSearchService = flexibleSearchService;
     }

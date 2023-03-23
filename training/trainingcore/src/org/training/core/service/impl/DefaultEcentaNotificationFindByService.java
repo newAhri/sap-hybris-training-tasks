@@ -45,6 +45,16 @@ public class DefaultEcentaNotificationFindByService implements EcentaNotificatio
         return ecentaNotificationModelList;
     }
 
+    @Override
+    public List<EcentaNotificationModel> getEcentaNotificationByID(String id) {
+        final List<EcentaNotificationModel> ecentaNotificationModelList = dao
+                .findNotificationByID(id);
+        if (ecentaNotificationModelList.isEmpty()){
+            throw new UnknownIdentifierException("No Ecenta Notification was found by ID");
+        }
+        return ecentaNotificationModelList;
+    }
+
     public CustomEcentaNotificationDAO getDao() {
         return dao;
     }

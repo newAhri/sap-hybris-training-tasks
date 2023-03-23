@@ -15,4 +15,6 @@ public interface EcentaNotificationFindByService {
 
     List<EcentaNotificationModel> getAllEcentaNotificatonsByB2BCustomerAndType(B2BCustomerModel b2BCustomerModel
             , NotificationTypeEnum typeEnum);
+
+    List<EcentaNotificationModel> getEcentaNotificationByID(String id);
 }

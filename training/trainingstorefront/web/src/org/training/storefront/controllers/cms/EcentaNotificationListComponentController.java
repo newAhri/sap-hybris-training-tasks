@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.training.core.crud.impl.DefaultEcentaNotificationRepositoryImpl;
 import org.training.core.model.EcentaNotificationModel;
 import org.training.core.model.components.EcentaNotificationListComponentModel;
 import org.training.core.service.EcentaNotificationFindByService;
@@ -33,7 +34,8 @@ public class EcentaNotificationListComponentController
     private UserService userService;
     @Resource(name = "defaultEcentaNotificationFindByService")
     private EcentaNotificationFindByService ecentaNotificationFindByService;
-
+    @Resource(name = "defaultEcentaNotificationRepositoryImpl")
+    private DefaultEcentaNotificationRepositoryImpl repository;
 
     @Override
     protected void fillModel(HttpServletRequest request, Model model, EcentaNotificationListComponentModel component) {
@@ -54,8 +56,20 @@ public class EcentaNotificationListComponentController
     @ResponseBody
     protected List<EcentaNotificationData> getRefreshedList(
             @RequestParam("id") String id
-    ){
+    ) {
+        UserModel currentUserModel = userService.getCurrentUser();
 
-        return null;
+        EcentaNotificationModel model = (ecentaNotificationFindByService.getEcentaNotificationByID(id)).get(0);
+        repository.deleteEcentaNotification(model);
+
+
+        List<EcentaNotificationModel> ecentaNotificationModelList = ecentaNotificationFindByService
+                .getAllEcentaNotificatonsByB2BCustomer((B2BCustomerModel) currentUserModel);
+
+        List<EcentaNotificationData> ecentaNotificationDataList = ecentaNotificationModelList.stream()
+                .map(ecentaNotificationModel -> ecentaNotificationFacade.getEcentaNotificationData(ecentaNotificationModel))
+                .collect(Collectors.toList());
+
+        return ecentaNotificationDataList;
     }
 }

@@ -13,4 +13,5 @@ public interface CustomEcentaNotificationDAO {
     List<EcentaNotificationModel> findAllNotificationsByB2BCustomer(final B2BCustomerModel b2BCustomer);
     List<EcentaNotificationModel> findAllNotificationsByB2BCustomerAndPriority(final B2BCustomerModel b2BCustomer, final NotificationPriorityEnum priorityEnum);
     List<EcentaNotificationModel> findAllNotificationsByB2BCustomerAndType(final B2BCustomerModel b2BCustomer, final NotificationTypeEnum typeEnum);
+    List<EcentaNotificationModel> findNotificationByID(final String id);
 }

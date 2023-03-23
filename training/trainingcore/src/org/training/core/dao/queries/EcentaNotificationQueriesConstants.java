@@ -43,6 +43,11 @@ public final class EcentaNotificationQueriesConstants {
 
     public final static String TYPE_CODE_CLAUSE = " {NotificationTypeEnum.CODE} = ?type ";
 
+    public final static String ID_CLAUSE = "{"
+            + EcentaNotificationModel.ID
+            + "} = ?id ";
+
+
     public final static String SELECT_ECENTA_NOTIF_BY_B2BCUSTOMER = SELECT_ECENTA_NOTIF_CLAUSE
             + FROM_ECENTA_NOTIF_TABLE
             + "WHERE "
@@ -67,4 +72,10 @@ public final class EcentaNotificationQueriesConstants {
             + "WHERE {"
             + EcentaNotificationModel.ID
             + "} = 1 ";
+
+
+    public final static String SELECT_ECENTA_NOTIF_BY_ID = SELECT_ECENTA_NOTIF_CLAUSE
+            + FROM_ECENTA_NOTIF_TABLE
+            + "WHERE "
+            + ID_CLAUSE;
 }
