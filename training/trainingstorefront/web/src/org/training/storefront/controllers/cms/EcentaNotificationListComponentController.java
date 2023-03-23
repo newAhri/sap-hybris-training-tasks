@@ -7,6 +7,9 @@ import de.hybris.platform.servicelayer.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.training.core.model.EcentaNotificationModel;
 import org.training.core.model.components.EcentaNotificationListComponentModel;
 import org.training.core.service.EcentaNotificationFindByService;
@@ -45,5 +48,14 @@ public class EcentaNotificationListComponentController
 
             model.addAttribute("ecentaNotificationDataList", ecentaNotificationDataList);
         }
+    }
+
+    @RequestMapping(value = "/getRefreshedList", method = RequestMethod.GET)
+    @ResponseBody
+    protected List<EcentaNotificationData> getRefreshedList(
+            @RequestParam("id") String id
+    ){
+
+        return null;
     }
 }

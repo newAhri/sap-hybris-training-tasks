@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div class="ecentaNotificationListComponent" id="component" method="post">
+<div class="ecentaNotificationListComponent" id="component">
     <c:forEach items="${ecentaNotificationDataList}" var="notification">
         <tr>
             <td>
@@ -25,16 +25,22 @@
             </td>
             <td><c:out value="${notification.date}"/></td>
             <td><c:out value="${notification.message}"/></td>
-            <button class="btn btn-success" data-id="${notification.pk}"></button>
+            <button class="btn btn-success" data-id="${notification.id}"></button>
         </tr>
     </c:forEach>
 </div>
 <script>
     $(document).on('click', 'button[data-id]', function (e) {
-        var notification_pk = $(this).attr('data-id');
-
+        var notification_id = $(this).attr('data-id');
+        var data = 'id=' + encodeURIComponent(notification_id);
         $.ajax({
-            
+            url : '/view/EcentaNotificationListComponentController/getRefreshedList',
+            data : data,
+            type : "GET",
+
+            success : function(response){
+                $('#component').val(response);
+            }
         })
     });
 </script>
