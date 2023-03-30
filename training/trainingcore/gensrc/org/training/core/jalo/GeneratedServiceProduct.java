@@ -1,11 +1,12 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 22 мар. 2023 г., 13:17:35                   ---
+ * --- Generated at 27 мар. 2023 г., 11:49:36                   ---
  * ----------------------------------------------------------------
  */
 package org.training.core.jalo;
 
+import de.hybris.platform.catalog.jalo.CatalogVersion;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.JaloInvalidParameterException;
@@ -30,6 +31,8 @@ public abstract class GeneratedServiceProduct extends GenericItem
 	public static final String CREATIONDATE = "creationDate";
 	/** Qualifier of the <code>ServiceProduct.description</code> attribute **/
 	public static final String DESCRIPTION = "description";
+	/** Qualifier of the <code>ServiceProduct.catalogVersion</code> attribute **/
+	public static final String CATALOGVERSION = "catalogVersion";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
@@ -38,12 +41,49 @@ public abstract class GeneratedServiceProduct extends GenericItem
 		tmp.put(NAME, AttributeMode.INITIAL);
 		tmp.put(CREATIONDATE, AttributeMode.INITIAL);
 		tmp.put(DESCRIPTION, AttributeMode.INITIAL);
+		tmp.put(CATALOGVERSION, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
 	protected Map<String, AttributeMode> getDefaultAttributeModes()
 	{
 		return DEFAULT_INITIAL_ATTRIBUTES;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>ServiceProduct.catalogVersion</code> attribute.
+	 * @return the catalogVersion
+	 */
+	public CatalogVersion getCatalogVersion(final SessionContext ctx)
+	{
+		return (CatalogVersion)getProperty( ctx, CATALOGVERSION);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>ServiceProduct.catalogVersion</code> attribute.
+	 * @return the catalogVersion
+	 */
+	public CatalogVersion getCatalogVersion()
+	{
+		return getCatalogVersion( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>ServiceProduct.catalogVersion</code> attribute. 
+	 * @param value the catalogVersion
+	 */
+	public void setCatalogVersion(final SessionContext ctx, final CatalogVersion value)
+	{
+		setProperty(ctx, CATALOGVERSION,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>ServiceProduct.catalogVersion</code> attribute. 
+	 * @param value the catalogVersion
+	 */
+	public void setCatalogVersion(final CatalogVersion value)
+	{
+		setCatalogVersion( getSession().getSessionContext(), value );
 	}
 	
 	/**

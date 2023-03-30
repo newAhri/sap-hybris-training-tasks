@@ -1,0 +1,8 @@
+REMOVE ContentSlotName; name[unique = true];
+                      ; EcentaNotificationListSlotName
+
+REMOVE ContentSlot; uid[unique = true]
+                  ; ecentaNotificationListContentSlot
+
+REMOVE ContentSlotForPage; uid[unique = true]
+                         ; ecentaNotificationListSlotForPage

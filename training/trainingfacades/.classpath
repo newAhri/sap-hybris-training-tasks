@@ -6,6 +6,7 @@
 	<classpathentry exported="true" kind="src" path="/trainingcore" />
 	<classpathentry exported="true" kind="src" path="/commercefacades" />
 	<classpathentry exported="true" kind="src" path="/b2bcommercefacades" />
+	<classpathentry exported="true" kind="lib" path="lib/xml-apis-1.0.b2.jar" />
 	<classpathentry exported="true" kind="lib" path="resources" />
 	<classpathentry exported="true" output="eclipsebin/classes" kind="src" path="src" />
 	<classpathentry exported="true" output="eclipsebin/classes" kind="src" path="testsrc" />

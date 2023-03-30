@@ -234,7 +234,7 @@
                         <value>java.lang.Boolean.TRUE</value>
                     </property>
                     <property name="catalogVersionAttributeQualifier">
-                        <value>"catalogversion"</value>
+                        <value>"catalogVersion"</value>
                     </property>
                     <property name="uniqueKeyAttributeQualifier">
                         <value>"id"</value>
@@ -242,7 +242,7 @@
                 </custom-properties>
                 <attributes>
                     <attribute qualifier="id" type="java.lang.String">
-                        <modifiers unique="true" read="true" write="false" initial="true" optional="false"/>
+                        <modifiers unique="true" read="true" initial="true" write="false" optional="false"/>
                         <persistence type="property"/>
                     </attribute>
                     <attribute qualifier="name" type="java.lang.String">
@@ -255,6 +255,10 @@
                     </attribute>
                     <attribute qualifier="description" type="java.lang.String">
                         <modifiers read="true" write="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="catalogVersion" type="CatalogVersion">
+                        <modifiers unique="true" read="true" write="true" search="true" initial="true" optional="false" />
                         <persistence type="property"/>
                     </attribute>
                 </attributes>
