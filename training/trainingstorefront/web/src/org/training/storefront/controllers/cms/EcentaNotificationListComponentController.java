@@ -1,9 +1,16 @@
 package org.training.storefront.controllers.cms;
 
 
+import de.hybris.platform.acceleratorstorefrontcommons.controllers.cms.AbstractCMSComponentController;
 import de.hybris.platform.b2b.model.B2BCustomerModel;
 import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +27,14 @@ import org.training.storefront.controllers.ControllerConstants;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+@Controller("EcentaNotificationListComponentController")
 @RequestMapping(value = ControllerConstants.Actions.Cms.EcentaNotificationListComponent)
 public class EcentaNotificationListComponentController
-        extends AbstractAcceleratorCMSComponentController<EcentaNotificationListComponentModel> {
+        extends AbstractCMSComponentController<EcentaNotificationListComponentModel> {
 
     @Resource(name = "ecentaNotificationFacade")
     private EcentaNotificationFacade ecentaNotificationFacade;
@@ -36,9 +44,11 @@ public class EcentaNotificationListComponentController
     private EcentaNotificationFindByService ecentaNotificationFindByService;
     @Resource(name = "defaultEcentaNotificationRepositoryImpl")
     private DefaultEcentaNotificationRepositoryImpl repository;
+    private static Logger LOG = LoggerFactory.getLogger(EcentaNotificationListComponentController.class);
 
     @Override
     protected void fillModel(HttpServletRequest request, Model model, EcentaNotificationListComponentModel component) {
+
         UserModel currentUserModel = userService.getCurrentUser();
         if (!userService.isAnonymousUser(currentUserModel)) {
             List<EcentaNotificationModel> ecentaNotificationModelList = ecentaNotificationFindByService
@@ -47,29 +57,22 @@ public class EcentaNotificationListComponentController
             List<EcentaNotificationData> ecentaNotificationDataList = ecentaNotificationModelList.stream()
                     .map(ecentaNotificationModel -> ecentaNotificationFacade.getEcentaNotificationData(ecentaNotificationModel))
                     .collect(Collectors.toList());
-
+            /*List<EcentaNotificationData> ecentaNotificationDataList = new ArrayList<>();
+            for (int i = 0; i < ecentaNotificationModelList.size(); i++) {
+                ecentaNotificationDataList.add(ecentaNotificationFacade.getEcentaNotificationData(ecentaNotificationModelList.get(i)));
+                System.out.println();*/
             model.addAttribute("ecentaNotificationDataList", ecentaNotificationDataList);
         }
     }
 
-    @RequestMapping(value = "/getRefreshedList", method = RequestMethod.GET)
-    @ResponseBody
-    protected List<EcentaNotificationData> getRefreshedList(
-            @RequestParam("id") String id
-    ) {
-        UserModel currentUserModel = userService.getCurrentUser();
-
-        EcentaNotificationModel model = (ecentaNotificationFindByService.getEcentaNotificationByID(id)).get(0);
-        repository.deleteEcentaNotification(model);
 
 
-        List<EcentaNotificationModel> ecentaNotificationModelList = ecentaNotificationFindByService
-                .getAllEcentaNotificatonsByB2BCustomer((B2BCustomerModel) currentUserModel);
 
-        List<EcentaNotificationData> ecentaNotificationDataList = ecentaNotificationModelList.stream()
-                .map(ecentaNotificationModel -> ecentaNotificationFacade.getEcentaNotificationData(ecentaNotificationModel))
-                .collect(Collectors.toList());
 
-        return ecentaNotificationDataList;
+    @Override
+    protected String getView(EcentaNotificationListComponentModel component) {
+        LOG.info("getView method;");
+        return ControllerConstants.Views.Cms.ComponentPrefix + getTypeCode(component).toLowerCase();
     }
+
 }

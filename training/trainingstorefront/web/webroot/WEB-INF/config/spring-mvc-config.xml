@@ -38,7 +38,7 @@
 	<!-- Scan for annotation configured controller -->
 	<context:component-scan base-package="org.training.storefront" scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver"  />
 
-    
+
 
 	<!-- Data Value Processor -->
 	<bean name="defaultRequestDataValueProcessor" class="org.training.storefront.util.DefaultRequestDataProcessor" />
@@ -123,12 +123,12 @@
 		</bean>
 
 	</util:list>
-	
+
 	<!-- Interceptor that runs once per request and before the controller handler method is called -->
 	<alias name="defaultBeforeControllerHandlerInterceptor" alias="beforeControllerHandlerInterceptor" />
 	<bean id="defaultBeforeControllerHandlerInterceptor" class="org.training.storefront.interceptors.BeforeControllerHandlerInterceptor" >
 		<property name="beforeControllerHandlers">
-			<ref bean="beforeControllerHandlersList" />	
+			<ref bean="beforeControllerHandlersList" />
 		</property>
 	</bean>
 
@@ -136,7 +136,7 @@
 	<alias name="defaultBeforeViewHandlerInterceptor" alias="beforeViewHandlerInterceptor" />
 	<bean id="defaultBeforeViewHandlerInterceptor" class="org.training.storefront.interceptors.BeforeViewHandlerInterceptor" >
 		<property name="beforeViewHandlers">
-			<ref bean="beforeViewHandlersList" />	
+			<ref bean="beforeViewHandlersList" />
 		</property>
 	</bean>
 
@@ -213,7 +213,7 @@
 	<bean id="uiExperienceSiteThemeResolver" class="org.training.storefront.web.theme.UiExperienceSiteThemeResolver" >
 		<property name="siteThemeResolverUtils" ref="siteThemeResolverUtils"/>
 	</bean>
-	
+
 	<bean id="localeResolver" class="org.training.storefront.web.i18n.StoreSessionLocaleResolver" >
 		<property name="i18NService" ref="i18NService"/>
 	</bean>
@@ -251,7 +251,7 @@
 	<bean id="simpleBreadcrumbBuilder" class="de.hybris.platform.acceleratorstorefrontcommons.breadcrumb.impl.DefaultResourceBreadcrumbBuilder" >
 		<property name="i18nService" ref="i18nService" />
 	</bean>
-	
+
 	<bean id="storeBreadcrumbBuilder" class="de.hybris.platform.acceleratorstorefrontcommons.breadcrumb.impl.StoreBreadcrumbBuilder" >
 		<property name="messageSource" ref="storefrontMessageSource" />
 		<property name="i18nService" ref="i18nService" />
@@ -363,5 +363,8 @@
 		<property name="cmsSiteService" ref="cmsSiteService"/>
 		<property name="defaultTheme" value="blue"/>
 	</bean>
+
+
+
 
 </beans>

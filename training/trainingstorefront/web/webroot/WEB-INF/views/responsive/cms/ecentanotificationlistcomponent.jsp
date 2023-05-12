@@ -6,54 +6,92 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<csrf disabled="true"/>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        console.log("check");
+        const csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    </script>
+    <script>
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            console.log("check");
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
 
-<spring:htmlEscape defaultHtmlEscape="true" />
-
-<b>
-
-
-    Hello!!!!
-
-
-
-</b>
-<div class="ecentaNotificationListComponent" id="component">
-    <c:forEach items="${ecentaNotificationDataList}" var="notification">
-        <tr>
-            <td>
-                <c:if test="${notification.priority == 'HIGH'}">
-                    <span class="glyphicon glyphicon-exclamation-sign" id="red_e"/>
-                </c:if>
-                <c:if test="${notification.priority == 'MEDIUM'}">
-                    <span class="glyphicon glyphicon-exclamation-sign" id="yellow_e"/>
-                </c:if>
-                <c:if test="${notification.priority == 'LOW'}">
-                    <span class="glyphicon glyphicon-exclamation-sign" id="green_e"/>
-                </c:if>
-            </td>
-            <td><c:out value="${notification.date}"/></td>
-            <td><c:out value="${notification.message}"/></td>
-            <button class="btn btn-success" data-id="${notification.id}"></button>
-        </tr>
-    </c:forEach>
-</div>
-<script>
-    $(document).on('click', 'button[data-id]', function (e) {
-        var notification_id = $(this).attr('data-id');
-        var data = 'id=' + encodeURIComponent(notification_id);
-        $.ajax({
-            url : '/view/EcentaNotificationListComponentController/getRefreshedList',
-            data : data,
-            type : "GET",
-
-            success : function(response){
-                $('#component').val(response);
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    console.log("token");
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
             }
-        })
-    });
-</script>
+        });
+        function myFunction(objButton) {
+            var id = objButton.value
+            var data = {
+                "id": id
+            }
+            $.ajax({
+                url: "/getRefreshedList",
+                data: JSON.stringify(id),
+                type: "POST",
+                csrftoken: csrftoken,
+
+                success: function () {
+                    $('#component').val();
+                }
+            })
+        }
+    </script>
+    <script>
+
+    </script>
+
+
+</head>
+
+<%--<spring:htmlEscape defaultHtmlEscape="true"/>--%>
+<%--<b>${fn:length(ecentaNotificationDataList)}</b>--%>
+<div class="ecentaNotificationListComponent" id="component">
+    <table>
+        <tr>
+            <th>Prority</th>
+            <th>Date</th>
+            <th>Message</th>
+            <th>Read</th>
+        </tr>
+        <c:forEach items="${ecentaNotificationDataList}" var="notification">
+            <tr>
+                <td>
+
+                    <c:if test="${notification.priority == 'HIGH'}">
+                        <p style="font-weight:bold; font-size: 25px; color:red">!</p>
+                    </c:if>
+                    <c:if test="${notification.priority == 'NORMAL'}">
+                        <p style="font-weight:bold; font-size: 25px; color:orange">!</p>
+                    </c:if>
+                    <c:if test="${notification.priority == 'LOW'}">
+                        <p style="font-weight:bold; font-size: 25px; color:limegreen">!</p>
+                    </c:if>
+
+                </td>
+                <td><c:out value="${notification.date}"/></td>
+                <td><c:out value="${notification.message}"/></td>
+                <td>
+                        <%-- <button class="btn btn-success" onclick="myFunction(notification.id)"></button>--%>
+                    <button class="btn-small" value="${notification.id}" onclick='myFunction(this)'></button>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
+
+
 
 
 
