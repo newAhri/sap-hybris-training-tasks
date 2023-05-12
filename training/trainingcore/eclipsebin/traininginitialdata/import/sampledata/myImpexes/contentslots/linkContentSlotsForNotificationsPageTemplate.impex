@@ -1,0 +1,26 @@
+$contentCatalog = powertoolsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog = powertoolsProductCatalog
+$productCatalogName = Powertools Product Catalog
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$picture = media(code, $contentCV) ;
+$siteResource = jar:de.hybris.platform.powertoolsstore.constants.PowertoolsStoreConstants&/powertoolsstore/import/sampledata/contentCatalogs/$contentCatalog
+$jarResourceCms = jar:de.hybris.platform.powertoolsstore.constants.PowertoolsStoreConstants&/powertoolsstore/import/sampledata/cockpits/cmscockpit
+# Load the storefront context root config param
+$storefrontContextRoot = $config-storefrontContextRoot
+$lang = en
+$category = category(code, $productCV)
+
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='OffersPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;SiteLogo-OffersPage;SiteLogo;;SiteLogoSlot;true
+                                    ;;HomepageLink-OffersPage;HomepageNavLink;;HomepageNavLinkSlot;true
+                                    ;;NavigationBar-OffersPage;NavigationBar;;NavigationBarSlot;true
+                                    ;;MiniCart-OffersPage;MiniCart;;MiniCartSlot;true
+                                    ;;Footer-OffersPage;Footer;;FooterSlot;true
+                                    ;;HeaderLinks-OffersPage;HeaderLinks;;HeaderLinksSlot;true
+                                    ;;SearchBox-OffersPage;SearchBox;;SearchBoxSlot;true
+                                    ;;TopHeaderSlot-OffersPage;TopHeaderSlot;;TopHeaderSlot;true
+                                    ;;BottomHeaderSlot-OffersPage;BottomHeaderSlot;;BottomHeaderSlot;true
+                                    ;;PlaceholderContentSlot-OffersPage;PlaceholderContentSlot;;PlaceholderContentSlot;true
+                                    ;;ecentaNotificationsParagraphSlot-ecentaNotificationsPage;ecentaNotificationsParagraph;;ecentaNotificationsParagraphSlot;true
