@@ -12,7 +12,7 @@ $lang = en
 $category = category(code, $productCV)
 
 
-INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='OffersPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='EcentaNotificationsPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
                                     ;;SiteLogo-OffersPage;SiteLogo;;SiteLogoSlot;true
                                     ;;HomepageLink-OffersPage;HomepageNavLink;;HomepageNavLinkSlot;true
                                     ;;NavigationBar-OffersPage;NavigationBar;;NavigationBarSlot;true

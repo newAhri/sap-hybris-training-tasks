@@ -35,7 +35,8 @@ public class CsrfProtectionMatcher implements RequestMatcher
 	private List<String> csrfAllowedUrlPatterns;
 
 	// Set of request method that should be CSRF token validated
-	private final HashSet<String> csrfProtectedMethodSet = new HashSet<String>(Arrays.asList("POST"));
+	//private final HashSet<String> csrfProtectedMethodSet = new HashSet<String>(Arrays.asList("POST"));
+	private final HashSet<String> csrfProtectedMethodSet = new HashSet<String>();
 
 	@Override
 	public boolean matches(final HttpServletRequest request)

@@ -12,4 +12,4 @@ $lang = en
 $category = category(code, $productCV)
 
 INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
-                          ;;EcentaNotificationsPageTemplate;Ecenta Notifications Page Template;notifications/notificationsLayoutPage;ContentPage
+                          ;;EcentaNotificationsPageTemplate;Ecenta Notifications Page Template;notifications/ecentaNotificationsLayoutPage;ContentPage

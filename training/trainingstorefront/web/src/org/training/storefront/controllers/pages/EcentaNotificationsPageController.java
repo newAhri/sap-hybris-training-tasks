@@ -1,25 +1,18 @@
 package org.training.storefront.controllers.pages;
 
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
-import de.hybris.platform.b2b.model.B2BCustomerModel;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
 import de.hybris.platform.cms2.model.pages.ContentPageModel;
-
-import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.user.UserService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.training.core.model.EcentaNotificationModel;
 import org.training.core.service.EcentaNotificationFindByService;
 import org.training.facades.custom.EcentaNotificationFacade;
-import org.training.facades.notification.data.EcentaNotificationData;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @Scope("tenant")
@@ -42,4 +35,5 @@ public class EcentaNotificationsPageController extends AbstractPageController
         setUpMetaDataForContentPage(model, ecentaNotificationsCMSPage);
         return getViewForPage(model);
     }
+
 }
