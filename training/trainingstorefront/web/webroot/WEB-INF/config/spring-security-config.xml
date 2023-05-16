@@ -29,7 +29,7 @@
 		<security:intercept-url pattern="/**" requires-channel="https" />
 		<security:csrf token-repository-ref="csrfTokenRepository" request-matcher-ref="csrfProtectionMatcher"/>
 		<security:custom-filter before="CSRF_FILTER" ref="logoutFilter" />
-		<security:csrf disabled="true"/>
+		<!--<security:csrf disabled="true"/>-->
 
 
 		<security:form-login
@@ -77,7 +77,7 @@
 		<security:session-management session-authentication-strategy-ref="fixation" invalid-session-url="/login" />
 		<security:csrf token-repository-ref="csrfTokenRepository" request-matcher-ref="csrfProtectionMatcher" />
 		<security:custom-filter before="CSRF_FILTER" ref="logoutFilter" />
-		<security:csrf disabled="true"/>
+		<!--<security:csrf disabled="true"/>-->
 
 		<!-- RememberMe -->
 		<security:remember-me key="trainingstorefront" services-ref="rememberMeServices" />

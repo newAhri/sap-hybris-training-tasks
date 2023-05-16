@@ -1,0 +1,16 @@
+$contentCatalog = powertoolsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog = powertoolsProductCatalog
+$productCatalogName = Powertools Product Catalog
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$picture = media(code, $contentCV) ;
+$siteResource = jar:de.hybris.platform.powertoolsstore.constants.PowertoolsStoreConstants&/powertoolsstore/import/sampledata/contentCatalogs/$contentCatalog
+$jarResourceCms = jar:de.hybris.platform.powertoolsstore.constants.PowertoolsStoreConstants&/powertoolsstore/import/sampledata/cockpits/cmscockpit
+# Load the storefront context root config param
+$storefrontContextRoot = $config-storefrontContextRoot
+$lang = en
+$category = category(code, $productCV)
+
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false']
+                         ;;ecentaNotificationsContentPage;Ecenta Notifications Content Page;EcentaNotificationsPageTemplate;ecentaNotificationsCMSPage

@@ -1,0 +1,28 @@
+$contentCatalog = powertoolsContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog = powertoolsProductCatalog
+$productCatalogName = Powertools Product Catalog
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$picture = media(code, $contentCV) ;
+$siteResource = jar:de.hybris.platform.powertoolsstore.constants.PowertoolsStoreConstants&/powertoolsstore/import/sampledata/contentCatalogs/$contentCatalog
+$jarResourceCms = jar:de.hybris.platform.powertoolsstore.constants.PowertoolsStoreConstants&/powertoolsstore/import/sampledata/cockpits/cmscockpit
+# Load the storefront context root config param
+$storefrontContextRoot = $config-storefrontContextRoot
+$lang = en
+$category = category(code, $productCV)
+
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]                ; $contentCV[unique = true]; name                                 ; parent(uid, $contentCV)   ; children(uid, $contentCV)[mode = append]; links(uid, $contentCV)  ; &nodeRef
+                               ; EcentaNotificationsNavigationNode ;                          ; Ecenta Notifications Navigation Node ; PowertoolsCategoryNavNode ;                                         ; EcentaNotificationsLink ; EcentaNotificationsNavigationNode
+
+INSERT_UPDATE NavigationBarComponent; $contentCV[unique = true]; uid[unique = true]                        ; name                                         ; wrapAfter; link(uid, $contentCV)   ; styleClass; navigationNode(uid, $contentCV)   ; dropDownLayout(code)[default = 'AUTO']
+                                    ;                          ; EcentaNotificationsNavigationBarComponent ; EcentaNotifications Navigation Bar Component ; 10       ; EcentaNotificationsLink ;           ; EcentaNotificationsNavigationNode ; ;
+
+INSERT_UPDATE NavigationBarCollectionComponent; $contentCV[unique = true]; uid[unique = true]; name                                ; components(uid, $contentCV)               ; &componentRef
+                                              ;                          ; NavBarComponent   ; Navigation Bar Collection Component ; EcentaNotificationsNavigationBarComponent ; NavBarComponent
+
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]      ; name                      ; url                   ; category(code, $productCV); target(code)[default = 'sameWindow']
+                              ;                          ; EcentaNotificationsLink ; Ecenta Notifications Link ; /ecenta-notifications ;                           ;
+
+INSERT_UPDATE CMSNavigationEntry; uid[unique = true]                     ; $contentCV[unique = true]; name          ; navigationNode(&nodeRef)          ; item(CMSLinkComponent.uid, CMSLinkComponent.$contentCV)
+                                ; EcentaNotificationsNavigationNodeEntry ;                          ; Notifications ; EcentaNotificationsNavigationNode ; EcentaNotificationsLink

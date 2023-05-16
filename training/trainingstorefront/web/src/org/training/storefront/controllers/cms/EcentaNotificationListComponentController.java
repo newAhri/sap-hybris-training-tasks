@@ -7,16 +7,9 @@ import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.training.core.crud.impl.DefaultEcentaNotificationRepositoryImpl;
 import org.training.core.model.EcentaNotificationModel;
 import org.training.core.model.components.EcentaNotificationListComponentModel;
@@ -27,7 +20,6 @@ import org.training.storefront.controllers.ControllerConstants;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -15,6 +15,8 @@
     <script type="text/javascript">
         console.log("check");
         const csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+        let name = [[${maxAmountToShow}]];
+        console.log("modelAttributeValue: ", name)
     </script>
     <script>
         function csrfSafeMethod(method) {
@@ -60,12 +62,12 @@
 <div class="ecentaNotificationListComponent" id="component">
     <table>
         <tr>
-            <th>Prority</th>
+            <th>Priority</th>
             <th>Date</th>
             <th>Message</th>
             <th>Read</th>
         </tr>
-        <c:forEach items="${ecentaNotificationDataList}" var="notification">
+        <c:forEach items="${ecentaNotificationDataList}" var="notification" end="${maxAmountToShow}">
             <tr>
                 <td>
 
